@@ -44,13 +44,6 @@ export const Title2 = styled(Title)`
   color: ${(props) => props.theme.colors.brown};
 `;
 
-export const H2 = styled.h2`
-  color: ${(props) => props.theme.colors.brown};
-  font-weight: 800;
-  font-size: 2rem;
-  margin-bottom: 3rem;
-`;
-
 export const Icon = styled.img`
   width: 4rem;
 `;
@@ -92,19 +85,20 @@ export const Divider = styled.div`
 export const ContainerAdopt = styled.div`
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 80vw;
   margin-bottom: 8rem;
-  padding-left: 8rem;
+  padding: 0 8rem;
 `
+
+export const ContentAdopt = styled.div`
+  text-align: center;
+`;
 
 export const Cat = styled.img`
   width: 18rem;
-  position: absolute;
-  top: -6rem;
-  left: 12rem;
+
 `;
 
 export const TextAdopt = styled.span`
@@ -132,7 +126,7 @@ export const Dog = styled.img`
   right: 20rem;
 `;
 
-export const TitleDonation = styled(H2)`
+export const TitleDonation = styled.h2`
   color: ${(props) => props.theme.colors.nude};
 
 `;

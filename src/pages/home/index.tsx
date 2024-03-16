@@ -16,7 +16,7 @@ export function Home() {
         <S.Title2>&nbsp;Adote!</S.Title2>
       </S.ContainerTitle>
       <S.Main>
-        <S.H2>Como funciona</S.H2>
+        <h2>Como funciona</h2>
         <S.ContainerIcons>
           <S.ContentIcons>
             <S.Icon src={findPet} alt="" />
@@ -59,24 +59,29 @@ export function Home() {
 
         <S.ContainerAdopt>
           <S.Cat src={cat} alt="" />
-          <S.H2>Por que adotar?</S.H2>
-          <S.TextAdopt>
-            Quando você adota um cachorro ou gato, você está providenciando uma
-            segunda chance para esses adoráveis seres que vem de variados
-            cenários, muitos são resgatados da rua onde nasceram, outros foram
-            abandonados por aqueles em quem mais confiavam. <br />
-            Adotando você possibilita que as ONG's e abrigos de animais que
-            estão lotadas possam resgatar e salvar ainda mais peludos, e você dará
-            a eles todo amor, cuidado e segurança que eles merecem transformando
-            suas vidas para sempre.{" "}
-          </S.TextAdopt>
+          <S.ContentAdopt>
+            <h2>Por que adotar?</h2>
+            <S.TextAdopt>
+              Quando você adota um cachorro ou gato, você está providenciando
+              uma segunda chance para esses adoráveis seres que vem de variados
+              cenários, muitos são resgatados da rua onde nasceram, outros foram
+              abandonados por aqueles em quem mais confiavam. <br />
+              Adotando você possibilita que as ONG's e abrigos de animais que
+              estão lotadas possam resgatar e salvar ainda mais peludos, e você
+              dará a eles todo amor, cuidado e segurança que eles merecem
+              transformando suas vidas para sempre.{" "}
+            </S.TextAdopt>
+          </S.ContentAdopt>
         </S.ContainerAdopt>
         <S.ContainerDonation>
           <S.Dog src={dog} alt="" />
           <S.TitleDonation>Apadrinhar um pet</S.TitleDonation>
           <S.TextDonation>
             Não pode adotar mas gostaria de contribuir? Você pode ajudar
-            apadrinhando um pet! Em nossa seção <Link to="/adotar"><S.LinkSpan>Adotar</S.LinkSpan></Link>
+            apadrinhando um pet! Em nossa seção{" "}
+            <Link to="/adotar">
+              <S.LinkSpan>Adotar</S.LinkSpan>
+            </Link>
             , clique em Apadrinhar e siga os passos que serão mostrados a você.
             A ONG / abrigo receberá sua contribuição e poderá continuar cuidando
             bem de seus peludos.
