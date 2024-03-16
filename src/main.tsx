@@ -5,6 +5,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Home } from './pages/home/index.tsx'
 import { Adopt } from './pages/adopt/index.tsx'
+import { About } from './pages/about/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/adotar',
         element: <Adopt />
+      },
+      {
+        path: '/sobre',
+        element: <About />
       }
     ]
   }

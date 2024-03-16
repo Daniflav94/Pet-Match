@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  display: fixed;
+  position: fixed;
+  z-index: 999999;
   height: 5rem;
   background-color: ${(props) => props.theme.colors.blue};
 `;
@@ -12,7 +13,7 @@ export const Ul = styled.ul`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5rem;
-  margin: 0
+  margin: 0;
 `;
 
 export const Logo = styled.li`
@@ -37,7 +38,7 @@ export const LogoText = styled.span`
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   margin-left: 0.5rem;
-  color: ${(props) => props.theme.colors.brown}
+  color: ${(props) => props.theme.colors.nude};
 `;
 
 export const Span = styled.span`
@@ -46,10 +47,22 @@ export const Span = styled.span`
   font-size: 0.9rem;
   color: aliceblue;
   z-index: 99999;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
   letter-spacing: 0.1rem;
 
   &:hover {
     border-bottom: 2px solid ${(props) => props.theme.colors.yellow};
   }
+`;
+
+export const Icon = styled.img`
+  width: 1.5rem;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+export const Container = styled(Div)`
+  gap: 2rem;
 `;

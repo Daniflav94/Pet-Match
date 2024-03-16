@@ -10,22 +10,21 @@ export const Pet = styled.img`
 
 export const Section = styled.section`
   width: 100vw;
-  padding-top: 2rem;
-  height: 100vh;
+  padding-top: 7rem;
   overflow: hidden;
   background-color: ${(props) => props.theme.colors.blue};
 `;
 
-export const Div = styled.div`
+export const ContainerTitle = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 19rem;
 `;
 
-export const Div2 = styled.div`
+export const Main = styled.div`
   background-color: ${(props) => props.theme.colors.snow};
   z-index: 2;
-  height: 80vh;
+  height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -49,7 +48,7 @@ export const H2 = styled.h2`
   color: ${(props) => props.theme.colors.brown};
   font-weight: 800;
   font-size: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 `;
 
 export const Icon = styled.img`
@@ -59,7 +58,7 @@ export const Icon = styled.img`
 export const ContainerIcons = styled.div`
   display: flex;
   align-items: flex-start;
-
+  margin-bottom: 5rem;
 `;
 
 export const ContentIcons = styled(ContainerIcons)`
@@ -89,3 +88,65 @@ export const Divider = styled.div`
   background-color: ${(props) => props.theme.colors.yellow};
   margin-top: 1rem;
 `;
+
+export const ContainerAdopt = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-bottom: 8rem;
+  padding-left: 8rem;
+`
+
+export const Cat = styled.img`
+  width: 18rem;
+  position: absolute;
+  top: -6rem;
+  left: 12rem;
+`;
+
+export const TextAdopt = styled.span`
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    width: 40rem;
+`
+
+export const ContainerDonation = styled.div`
+  display: flex;
+  position: relative;
+  padding: 8rem 0 8rem 20rem;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: ${(props) => props.theme.colors.brown};
+  width: 100vw;
+  height: fit-content;
+`
+
+export const Dog = styled.img`
+  width: 18rem;
+  position: absolute;
+  bottom: 0rem;
+  right: 20rem;
+`;
+
+export const TitleDonation = styled(H2)`
+  color: ${(props) => props.theme.colors.nude};
+
+`;
+
+export const TextDonation = styled(TextAdopt)`
+    color: ${(props) => props.theme.colors.snow};
+    text-align: start;
+`
+
+export const LinkSpan = styled.span`
+  color: ${(props) => props.theme.colors.nude};
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`

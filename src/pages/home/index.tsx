@@ -1,64 +1,90 @@
 import pet from "../../assets/images/dog.png";
-import {
-  Section,
-  Pet,
-  Div,
-  Div2,
-  Title,
-  Title2,
-  H2,
-  Divider,
-  Icon,
-  ContainerIcons,
-  ContentIcons,
-  Text,
-  Description
-} from "./styles";
+import * as S from "./styles";
 import findPet from "../../assets/icons/cat-search.svg";
 import requestPet from "../../assets/icons/cat-request.svg";
 import form from "../../assets/icons/form-adopt.svg";
 import addPet from "../../assets/icons/cat-add.svg";
+import cat from "../../assets/images/cat.png";
+import dog from "../../assets/images/1.png";
+import { Link } from "react-router-dom";
 
 export function Home() {
   return (
-    <Section>
-      <Div>
-        <Title>Não compre.</Title>
-        <Title2>&nbsp;Adote!</Title2>
-      </Div>
-      <Div2>
-        <H2>Como funciona</H2>
-        <ContainerIcons>
-          <ContentIcons>
-            <Icon src={findPet} alt="" />
-            <Text>Encontre seu pet</Text>
-            <Description>Navegue em nossa galeria de pets e encontre o pet ideal para você. Todos são castrados e vacinados.</Description>
-          </ContentIcons>
+    <S.Section>
+      <S.ContainerTitle>
+        <S.Title>Não compre.</S.Title>
+        <S.Title2>&nbsp;Adote!</S.Title2>
+      </S.ContainerTitle>
+      <S.Main>
+        <S.H2>Como funciona</S.H2>
+        <S.ContainerIcons>
+          <S.ContentIcons>
+            <S.Icon src={findPet} alt="" />
+            <S.Text>Encontre seu pet</S.Text>
+            <S.Description>
+              Navegue em nossa galeria de pets e encontre o pet ideal para você.
+              Todos são castrados e vacinados.
+            </S.Description>
+          </S.ContentIcons>
 
-          <Divider></Divider>
-          <ContentIcons>
-            <Icon src={requestPet} alt="" />
-            <Text>Conheça seu pet</Text>
-            <Description>Após solicitar adoção, aguarde resposta da ONG com as informações para conhecer o pet.</Description>
-          </ContentIcons>
+          <S.Divider></S.Divider>
+          <S.ContentIcons>
+            <S.Icon src={requestPet} alt="" />
+            <S.Text>Conheça seu pet</S.Text>
+            <S.Description>
+              Após solicitar adoção, aguarde resposta da ONG com as informações
+              para conhecer o pet.
+            </S.Description>
+          </S.ContentIcons>
 
-          <Divider></Divider>
-          <ContentIcons>
-            <Icon src={form} alt="" />
-            <Text>Preencha o formulário de adoção</Text>
-            <Description>Finalize o processo de adoção e receba todas as informações necessárias.</Description>
-          </ContentIcons>
+          <S.Divider></S.Divider>
+          <S.ContentIcons>
+            <S.Icon src={form} alt="" />
+            <S.Text>Preencha o formulário de adoção</S.Text>
+            <S.Description>
+              Finalize o processo de adoção e receba todas as informações
+              necessárias.
+            </S.Description>
+          </S.ContentIcons>
 
-          <Divider></Divider>
-          <ContentIcons>
-            <Icon src={addPet} alt="" />
-            <Text>Adicione o pet a sua família</Text>
-            <Description>Agora é só aproveitar a companhia do seu novo amigo.</Description>
-          </ContentIcons>
-        </ContainerIcons>
-      </Div2>
+          <S.Divider></S.Divider>
+          <S.ContentIcons>
+            <S.Icon src={addPet} alt="" />
+            <S.Text>Adicione o pet a sua família</S.Text>
+            <S.Description>
+              Agora é só aproveitar a companhia do seu novo amigo.
+            </S.Description>
+          </S.ContentIcons>
+        </S.ContainerIcons>
 
-      <Pet src={pet} alt="" />
-    </Section>
+        <S.ContainerAdopt>
+          <S.Cat src={cat} alt="" />
+          <S.H2>Por que adotar?</S.H2>
+          <S.TextAdopt>
+            Quando você adota um cachorro ou gato, você está providenciando uma
+            segunda chance para esses adoráveis seres que vem de variados
+            cenários, muitos são resgatados da rua onde nasceram, outros foram
+            abandonados por aqueles em quem mais confiavam. <br />
+            Adotando você possibilita que as ONG's e abrigos de animais que
+            estão lotadas possam resgatar e salvar ainda mais peludos, e você dará
+            a eles todo amor, cuidado e segurança que eles merecem transformando
+            suas vidas para sempre.{" "}
+          </S.TextAdopt>
+        </S.ContainerAdopt>
+        <S.ContainerDonation>
+          <S.Dog src={dog} alt="" />
+          <S.TitleDonation>Apadrinhar um pet</S.TitleDonation>
+          <S.TextDonation>
+            Não pode adotar mas gostaria de contribuir? Você pode ajudar
+            apadrinhando um pet! Em nossa seção <Link to="/adotar"><S.LinkSpan>Adotar</S.LinkSpan></Link>
+            , clique em Apadrinhar e siga os passos que serão mostrados a você.
+            A ONG / abrigo receberá sua contribuição e poderá continuar cuidando
+            bem de seus peludos.
+          </S.TextDonation>
+        </S.ContainerDonation>
+      </S.Main>
+
+      <S.Pet src={pet} alt="" />
+    </S.Section>
   );
 }

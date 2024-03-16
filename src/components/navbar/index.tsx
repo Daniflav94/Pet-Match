@@ -1,47 +1,58 @@
 import logo from "../../assets/icons/pet-house.png";
-import dogProfile from "../../assets/icons/dogProfile.png";
-
-import {
-  Nav,
-  Span,
-  Img,
-  LogoText,
-  Logo,
-  Div,
-  Ul,
-} from "./styles";
+import heart from "../../assets/icons/coracao.png";
+import bell from "../../assets/icons/sino.png";
+import * as S from "./styles";
 import { Link } from "react-router-dom";
 
 export function Navbar() {
   return (
-    <header>
-      <Nav>
-        <Ul>
-          <div>
-            <Logo>
-              <Img src={logo} alt="logo pet match" />
-              <LogoText>pet match</LogoText>
-            </Logo>
-          </div>
-          <Div>
+    <S.Nav>
+      <S.Ul>
+        <div>
+          <S.Logo>
+            <S.Img src={logo} alt="logo pet match" />
+            <S.LogoText>pet match</S.LogoText>
+          </S.Logo>
+        </div>
+        <S.Div>
+          <li>
+            <Link to="/">
+              <S.Span>Início</S.Span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/sobre">
+              <S.Span>Sobre</S.Span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/adotar">
+              <S.Span>Adotar</S.Span>
+            </Link>
+          </li>
+          <S.Container>
             <li>
-              <Link to="/"><Span>Início</Span></Link>
+              <Link to="/favoritos">
+                <S.Container>
+                  <S.Icon src={heart} alt="" />
+                </S.Container>
+              </Link>
             </li>
             <li>
-              <Link to="/sobre"><Span>Sobre</Span></Link>
+              <Link to="/notificacoes">
+                <S.Container>
+                  <S.Icon src={bell} alt="" />
+                </S.Container>
+              </Link>
             </li>
             <li>
-              <Link to="/adotar"><Span>Adotar</Span></Link>
+              <Link to="/">
+                <S.Span>Entrar</S.Span>
+              </Link>
             </li>
-            <li>
-              <button>
-                <Img src="" />
-              </button>
-            </li>
-            
-          </Div>
-        </Ul>
-      </Nav>
-    </header>
+          </S.Container>
+        </S.Div>
+      </S.Ul>
+    </S.Nav>
   );
 }

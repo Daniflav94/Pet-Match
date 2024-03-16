@@ -10,7 +10,8 @@ const theme = {
     snow: '#FEFBF6',
     yellow: '#ECB159',
     brown: '#B67352',
-    nude: '#F1E4C3',
+    nude: '#f0e4c4',
+    coffee: '#866552'
   }
 }
   return (
