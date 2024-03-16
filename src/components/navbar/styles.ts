@@ -66,3 +66,13 @@ export const Icon = styled.img`
 export const Container = styled(Div)`
   gap: 2rem;
 `;
+
+export const Login = styled(Span)`
+  border: 1px solid ${props => props.theme.colors.nude};
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+   border: 1px solid ${(props) => props.theme.colors.yellow};
+  }
+`;
