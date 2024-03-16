@@ -14,12 +14,15 @@ export const Container = styled.section`
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props.theme.colors.snow};
+  
 `;
 
 export const Content = styled.div`
   width: 40rem;
   margin-left: 5rem;
   z-index: 999999 !important;
+  
 `;
 
 export const Image = styled.img`
