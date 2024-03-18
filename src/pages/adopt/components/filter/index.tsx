@@ -61,7 +61,6 @@ export function FilterAdopt(props: Props) {
   }, []);
 
   return (
-    <S.Container>
       <S.ContainerSearch>
         <S.H3>Encontre e adote</S.H3>
         <S.ContainerIcons>
@@ -97,9 +96,9 @@ export function FilterAdopt(props: Props) {
               onChange={setSize}
               placeholder="Porte"
               listItems={[
-                { value: "small", name: "Pequeno" },
-                { value: "medium", name: "Médio" },
-                { value: "large", name: "Grande" },
+                { value: "Pequeno", name: "Pequeno" },
+                { value: "Médio", name: "Médio" },
+                { value: "Grande", name: "Grande" },
               ]}
             />
 
@@ -107,10 +106,10 @@ export function FilterAdopt(props: Props) {
               onChange={setAge}
               placeholder="Idade"
               listItems={[
-                { value: "puppy", name: "Filhote" },
-                { value: "young", name: "Jovem" },
-                { value: "adult", name: "Adulto" },
-                { value: "elderly", name: "Idoso" },
+                { value: "Filhote", name: "Filhote" },
+                { value: "Jovem", name: "Jovem" },
+                { value: "Adulto", name: "Adulto" },
+                { value: "Idoso", name: "Idoso" },
               ]}
             />
 
@@ -118,8 +117,8 @@ export function FilterAdopt(props: Props) {
               onChange={setGender}
               placeholder="Sexo"
               listItems={[
-                { value: "male", name: "Macho" },
-                { value: "female", name: "Fêmea" },
+                { value: "Macho", name: "Macho" },
+                { value: "Fêmea", name: "Fêmea" },
               ]}
             />
           </S.ContentSelect>
@@ -157,6 +156,5 @@ export function FilterAdopt(props: Props) {
           Filtrar
         </S.Button>
       </S.ContainerSearch>
-    </S.Container>
   );
 }

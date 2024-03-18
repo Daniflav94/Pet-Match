@@ -10,8 +10,9 @@ const theme = {
     yellow: '#ECB159',
     brown: '#B67352',
     nude: '#f0e4c4',
-    nude2: '#F8EDE3',
-    coffee: '#866552'
+    nude2: '#f5eee8',
+    coffee: '#866552',
+    gray: '#707070'
   }
 }
   return (

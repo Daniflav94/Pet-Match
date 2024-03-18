@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-
-export const Container = styled.section`
-  width: 100vw;
-  height: 100vh;
-  padding-top: 5rem;
-  background-color: ${(props) => props.theme.colors.nude2};
-  font-family: 'Poppins', sans-serif;
-`;
-
 export const ContainerSearch = styled.div`
   padding: 2rem;
   display: flex;

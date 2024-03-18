@@ -60,7 +60,7 @@ export const Icon = styled.img`
   width: 1.5rem;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
 

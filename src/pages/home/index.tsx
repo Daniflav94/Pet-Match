@@ -7,13 +7,30 @@ import addPet from "../../assets/icons/cat-add.svg";
 import cat from "../../assets/images/cat.png";
 import dog from "../../assets/images/1.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export function Home() {
   return (
     <S.Section>
       <S.ContainerTitle>
-        <S.Title>Não compre.</S.Title>
-        <S.Title2>&nbsp;Adote!</S.Title2>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: 1,
+            duration: 0.7,
+            ease: "linear",
+          }}
+        >
+          <S.Title>Não compre.</S.Title>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", delay: 2, ease: "linear" }}
+        >
+          <S.Title2>&nbsp;Adote!</S.Title2>
+        </motion.div>
       </S.ContainerTitle>
       <S.Main>
         <h2>Como funciona</h2>
@@ -75,7 +92,7 @@ export function Home() {
         </S.ContainerAdopt>
         <S.ContainerDonation>
           <S.ContentDonation>
-            <S.TitleDonation>Apadrinhar um pet</S.TitleDonation>
+            <h2>Apadrinhar um pet</h2>
             <S.TextDonation>
               Não pode adotar mas gostaria de contribuir? Você pode ajudar
               apadrinhando um pet! Em nossa seção{" "}

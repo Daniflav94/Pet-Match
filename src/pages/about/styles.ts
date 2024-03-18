@@ -16,7 +16,7 @@ export const Container = styled.section`
   align-items: center;
   background-color: ${(props) => props.theme.colors.snow};
   font-family: 'Poppins', sans-serif;
-  
+  color: ${(props) => props.theme.colors.gray};
 `;
 
 export const Content = styled.div`

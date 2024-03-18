@@ -2,32 +2,34 @@ import logo from "../../assets/icons/pet-house.png";
 import heart from "../../assets/icons/coracao.png";
 import bell from "../../assets/icons/sino.png";
 import * as S from "./styles";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 export function Navbar() {
+  const route = useLocation();
+  
   return (
     <S.Nav>
       <S.Ul>
-        <div>
+        <Link to="/">
           <S.Logo>
             <S.Img src={logo} alt="logo pet match" />
             <S.LogoText>pet match</S.LogoText>
           </S.Logo>
-        </div>
+        </Link>
         <S.Div>
           <li>
             <Link to="/">
-              <S.Span>Início</S.Span>
+              <S.Span style={route.pathname === '/' ? {borderBottom: '2px solid #ECB159'} : {}}>Início</S.Span>
             </Link>
           </li>
           <li>
             <Link to="/sobre">
-              <S.Span>Sobre</S.Span>
+              <S.Span style={route.pathname === '/sobre' ? {borderBottom: '2px solid #ECB159'} : {}}>Sobre</S.Span>
             </Link>
           </li>
           <li>
             <Link to="/adotar">
-              <S.Span>Adotar</S.Span>
+              <S.Span style={route.pathname === '/adotar' ? {borderBottom: '2px solid #ECB159'} : {}}>Adotar</S.Span>
             </Link>
           </li>
           <S.Container>

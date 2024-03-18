@@ -1,7 +1,7 @@
 export interface IOrganization {
     id?: string;
     email: string;
-    telephones: string[];
+    telephones: string;
     cnpj: string;
     name: string;
     photo: string;
