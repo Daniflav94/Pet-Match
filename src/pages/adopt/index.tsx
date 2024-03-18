@@ -1,5 +1,5 @@
 import { FilterAdopt } from "./components/filter";
-import { IFilter } from "./interfaces/IFilter";
+import { IFilter } from "../../interfaces/IFilter";
 
 
 

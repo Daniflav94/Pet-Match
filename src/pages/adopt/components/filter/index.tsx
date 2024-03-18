@@ -4,7 +4,7 @@ import catIcon from "../../../../assets/icons/cat.svg";
 import { useEffect, useState } from "react";
 import { SelectInput } from "../../../../components/select";
 import { getListCities, getListStates } from "../../../../services/apiIBGE";
-import { IFilter } from "../../interfaces/IFilter";
+import { IFilter } from "../../../../interfaces/IFilter";
 
 export interface State {
   id: number;
