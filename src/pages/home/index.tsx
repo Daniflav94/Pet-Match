@@ -74,18 +74,20 @@ export function Home() {
           </S.ContentAdopt>
         </S.ContainerAdopt>
         <S.ContainerDonation>
+          <S.ContentDonation>
+            <S.TitleDonation>Apadrinhar um pet</S.TitleDonation>
+            <S.TextDonation>
+              Não pode adotar mas gostaria de contribuir? Você pode ajudar
+              apadrinhando um pet! Em nossa seção{" "}
+              <Link to="/adotar">
+                <S.LinkSpan>Adotar</S.LinkSpan>
+              </Link>
+              , clique em Apadrinhar e siga os passos que serão mostrados a
+              você. A ONG / abrigo receberá sua contribuição e poderá continuar
+              cuidando bem de seus peludos.
+            </S.TextDonation>
+          </S.ContentDonation>
           <S.Dog src={dog} alt="" />
-          <S.TitleDonation>Apadrinhar um pet</S.TitleDonation>
-          <S.TextDonation>
-            Não pode adotar mas gostaria de contribuir? Você pode ajudar
-            apadrinhando um pet! Em nossa seção{" "}
-            <Link to="/adotar">
-              <S.LinkSpan>Adotar</S.LinkSpan>
-            </Link>
-            , clique em Apadrinhar e siga os passos que serão mostrados a você.
-            A ONG / abrigo receberá sua contribuição e poderá continuar cuidando
-            bem de seus peludos.
-          </S.TextDonation>
         </S.ContainerDonation>
       </S.Main>
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Pet = styled.img`
   position: absolute;
-  bottom: 18rem;
+  top: 20.5rem;
   right: 5rem;
   width: 40rem;
   z-index: 9999;
@@ -13,6 +13,7 @@ export const Section = styled.section`
   padding-top: 7rem;
   overflow: hidden;
   background-color: ${(props) => props.theme.colors.blue};
+  font-family: "Poppins", sans-serif;
 `;
 
 export const ContainerTitle = styled.div`
@@ -55,25 +56,25 @@ export const ContainerIcons = styled.div`
 `;
 
 export const ContentIcons = styled(ContainerIcons)`
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    width: 8rem;
-`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 8rem;
+`;
 
 export const Text = styled.span`
-    font-size: 0.9rem;
-    text-align: center;
-    font-weight: 600;
-`
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 600;
+`;
 
 export const Description = styled.span`
-font-size: 0.8rem;
-text-align: center;
-font-weight: 500;
-color: ${(props) => props.theme.colors.brown};
-`
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: 500;
+  color: ${(props) => props.theme.colors.brown};
+`;
 
 export const Divider = styled.div`
   width: 10rem;
@@ -87,10 +88,10 @@ export const ContainerAdopt = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: 70vw;
   margin-bottom: 8rem;
-  padding: 0 8rem;
-`
+  margin-right: 8rem;
+`;
 
 export const ContentAdopt = styled.div`
   text-align: center;
@@ -98,43 +99,44 @@ export const ContentAdopt = styled.div`
 
 export const Cat = styled.img`
   width: 18rem;
-
 `;
 
 export const TextAdopt = styled.span`
-    font-size: 1rem;
-    text-align: center;
-    font-weight: 400;
-    width: 40rem;
-`
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  width: 40rem;
+`;
 
 export const ContainerDonation = styled.div`
   display: flex;
-  position: relative;
-  padding: 8rem 0 8rem 20rem;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: ${(props) => props.theme.colors.brown};
+  padding: 2rem 2rem 0 2rem;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.colors.coffee};
   width: 100vw;
   height: fit-content;
-`
+`;
+
+export const ContentDonation = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+`;
 
 export const Dog = styled.img`
   width: 18rem;
-  position: absolute;
-  bottom: 0rem;
-  right: 20rem;
 `;
 
 export const TitleDonation = styled.h2`
   color: ${(props) => props.theme.colors.nude};
-
 `;
 
 export const TextDonation = styled(TextAdopt)`
-    color: ${(props) => props.theme.colors.snow};
-    text-align: start;
-`
+  color: ${(props) => props.theme.colors.snow};
+  text-align: start;
+  font-weight: 300;
+`;
 
 export const LinkSpan = styled.span`
   color: ${(props) => props.theme.colors.nude};
@@ -143,4 +145,4 @@ export const LinkSpan = styled.span`
   &:hover {
     text-decoration: underline;
   }
-`
+`;

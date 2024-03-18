@@ -4,12 +4,13 @@ export const Nav = styled.nav`
   position: fixed;
   z-index: 999999;
   height: 5rem;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.blue};
 `;
 
 export const Ul = styled.ul`
   display: flex;
-  width: 90vw;
+  width: 90%;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5rem;
@@ -69,7 +70,7 @@ export const Container = styled(Div)`
 
 export const Login = styled(Span)`
   border: 1px solid ${props => props.theme.colors.nude};
-  border-radius: 1rem;
+  border-radius: 8px;
   padding: 0.5rem 1rem;
 
   &:hover {

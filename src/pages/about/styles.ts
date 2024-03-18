@@ -15,6 +15,7 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.snow};
+  font-family: 'Poppins', sans-serif;
   
 `;
 
@@ -29,6 +30,7 @@ export const Image = styled.img`
   width: 15rem;
   height: 25rem;
   z-index: 99999;
+  border-radius: 8px;
 `;
 
 export const Title = styled.h2`

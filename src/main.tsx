@@ -4,10 +4,10 @@ import App from "./App.tsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/home/index.tsx";
-import { Adopt } from "./pages/adopt/index.tsx";
 import { About } from "./pages/about/index.tsx";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
+import { Adopt } from "./pages/adopt/index.tsx";
 
 const router = createBrowserRouter([
   {
