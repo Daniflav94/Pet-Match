@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/home/index.tsx";
 import { About } from "./pages/about/index.tsx";
 import "@radix-ui/themes/styles.css";
+import { NextUIProvider } from "@nextui-org/react";
 import { Theme } from "@radix-ui/themes";
 import { Adopt } from "./pages/adopt/index.tsx";
 
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Theme>
-      <RouterProvider router={router} />
+      <NextUIProvider>
+        <RouterProvider router={router} />
+      </NextUIProvider>
     </Theme>
   </React.StrictMode>
 );

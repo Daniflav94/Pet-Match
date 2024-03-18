@@ -87,6 +87,8 @@ export const Button = styled.button`
   background-color: ${(props) => props.theme.colors.yellow};
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+  color: white;
+  font-size: smaller;
 
   &:hover {
     background-color: #e5ac58;

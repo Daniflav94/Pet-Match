@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Pet = styled.img`
   position: absolute;
-  top: 20.5rem;
+  top: 28.5rem;
   right: 5rem;
   width: 40rem;
   z-index: 9999;
@@ -31,12 +31,12 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 8.5rem;
 `;
 
 export const Title = styled.h2`
   font-size: 6rem;
-  margin: 0;
+  margin-top: 5rem;
   z-index: 9999;
   font-family: "Outfit", sans-serif;
   color: ${(props) => props.theme.colors.snow};

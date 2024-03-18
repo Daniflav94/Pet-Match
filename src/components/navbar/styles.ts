@@ -10,7 +10,7 @@ export const Nav = styled.nav`
 
 export const Ul = styled.ul`
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5rem;

@@ -35,43 +35,90 @@ export function Home() {
       <S.Main>
         <h2>Como funciona</h2>
         <S.ContainerIcons>
-          <S.ContentIcons>
-            <S.Icon src={findPet} alt="" />
-            <S.Text>Encontre seu pet</S.Text>
-            <S.Description>
-              Navegue em nossa galeria de pets e encontre o pet ideal para você.
-              Todos são castrados e vacinados.
-            </S.Description>
-          </S.ContentIcons>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5, ease: "linear" }}
+          >
+            <S.ContentIcons>
+              <S.Icon src={findPet} alt="" />
+              <S.Text>Encontre seu pet</S.Text>
+              <S.Description>
+                Navegue em nossa galeria de pets e encontre o pet ideal para
+                você. Todos são castrados e vacinados.
+              </S.Description>
+            </S.ContentIcons>
+          </motion.div>
 
-          <S.Divider></S.Divider>
-          <S.ContentIcons>
-            <S.Icon src={requestPet} alt="" />
-            <S.Text>Conheça seu pet</S.Text>
-            <S.Description>
-              Após solicitar adoção, aguarde resposta da ONG com as informações
-              para conhecer o pet.
-            </S.Description>
-          </S.ContentIcons>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 1, ease: "linear" }}
+          >
+            <S.Divider></S.Divider>
+          </motion.div>
 
-          <S.Divider></S.Divider>
-          <S.ContentIcons>
-            <S.Icon src={form} alt="" />
-            <S.Text>Preencha o formulário de adoção</S.Text>
-            <S.Description>
-              Finalize o processo de adoção e receba todas as informações
-              necessárias.
-            </S.Description>
-          </S.ContentIcons>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 1.5, ease: "linear" }}
+          >
+            <S.ContentIcons>
+              <S.Icon src={requestPet} alt="" />
+              <S.Text>Conheça seu pet</S.Text>
+              <S.Description>
+                Após solicitar adoção, aguarde resposta da ONG com as
+                informações para conhecer o pet.
+              </S.Description>
+            </S.ContentIcons>
+          </motion.div>
 
-          <S.Divider></S.Divider>
-          <S.ContentIcons>
-            <S.Icon src={addPet} alt="" />
-            <S.Text>Adicione o pet a sua família</S.Text>
-            <S.Description>
-              Agora é só aproveitar a companhia do seu novo amigo.
-            </S.Description>
-          </S.ContentIcons>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 2, ease: "linear" }}
+          >
+            <S.Divider></S.Divider>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 2.5, ease: "linear" }}
+          >
+            <S.ContentIcons>
+              <S.Icon src={form} alt="" />
+              <S.Text>Preencha o formulário de adoção</S.Text>
+              <S.Description>
+                Finalize o processo de adoção e receba todas as informações
+                necessárias.
+              </S.Description>
+            </S.ContentIcons>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 3, ease: "linear" }}
+          >
+            {" "}
+            <S.Divider></S.Divider>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 3.5, ease: "linear" }}
+          >
+            {" "}
+            <S.ContentIcons>
+              <S.Icon src={addPet} alt="" />
+              <S.Text>Adicione o pet a sua família</S.Text>
+              <S.Description>
+                Agora é só aproveitar a companhia do seu novo amigo.
+              </S.Description>
+            </S.ContentIcons>{" "}
+          </motion.div>
         </S.ContainerIcons>
 
         <S.ContainerAdopt>

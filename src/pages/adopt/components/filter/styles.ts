@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerSearch = styled.div`
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +14,7 @@ export const H3 = styled.h3`
   font-family: "Poppins", sans-serif;
   color: ${(props) => props.theme.colors.brown};
   font-size: 2rem;
+  font-weight: 700;
 `;
 
 export const ContentIcon = styled.button`
@@ -68,6 +69,8 @@ export const Button = styled.button`
   font-weight: 400;
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: smaller;
 
   &:hover {
     background-color: #c27a56;
