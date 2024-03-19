@@ -78,7 +78,7 @@ export const ItemPersonality = styled.div`
   color: ${(props) => props.theme.colors.brown};
 `;
 
-export const Button = styled.button`
+export const Button = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,3 +101,5 @@ export const Button2 = styled.button`
   text-decoration: underline;
   font-size: small;
 `;
+
+

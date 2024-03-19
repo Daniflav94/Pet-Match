@@ -17,7 +17,7 @@ export function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            delay: 1,
+            delay: 0.4,
             duration: 0.7,
             ease: "linear",
           }}
@@ -27,7 +27,7 @@ export function Home() {
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", delay: 2, ease: "linear" }}
+          transition={{ type: "spring", delay: 1, ease: "linear" }}
         >
           <S.Title2>&nbsp;Adote!</S.Title2>
         </motion.div>
@@ -38,7 +38,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5, ease: "linear" }}
+            transition={{ delay: 0.2, ease: "linear" }}
           >
             <S.ContentIcons>
               <S.Icon src={findPet} alt="" />
@@ -53,7 +53,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 1, ease: "linear" }}
+            transition={{ delay: 0.4, ease: "linear" }}
           >
             <S.Divider></S.Divider>
           </motion.div>
@@ -61,7 +61,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.5, ease: "linear" }}
+            transition={{ delay: 0.6, ease: "linear" }}
           >
             <S.ContentIcons>
               <S.Icon src={requestPet} alt="" />
@@ -76,7 +76,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 2, ease: "linear" }}
+            transition={{ delay: 0.8, ease: "linear" }}
           >
             <S.Divider></S.Divider>
           </motion.div>
@@ -84,7 +84,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 2.5, ease: "linear" }}
+            transition={{ delay: 1, ease: "linear" }}
           >
             <S.ContentIcons>
               <S.Icon src={form} alt="" />
@@ -99,7 +99,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 3, ease: "linear" }}
+            transition={{ delay: 1.2, ease: "linear" }}
           >
             {" "}
             <S.Divider></S.Divider>
@@ -108,7 +108,7 @@ export function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 3.5, ease: "linear" }}
+            transition={{ delay: 1.4, ease: "linear" }}
           >
             {" "}
             <S.ContentIcons>
