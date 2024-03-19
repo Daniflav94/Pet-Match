@@ -2,14 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: ${(props) => props.theme.colors.snow};
-  width: 30rem;
+  width: 35rem;
   max-height: 93vh;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 5%;
-  left: 30%;
+  left: 50%; 
+  top: 50%; 
+  --tw-translate-x: -50%;
+  --tw-translate-y: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-radius: 8px;
   gap: 0.5rem;
   overflow-y: auto;
@@ -25,6 +28,7 @@ export const Title = styled.h3`
   font-size: 1.3rem;
   font-weight: 700;
   color: ${(props) => props.theme.colors.brown};
+  text-align: center;
 `;
 
 export const Subtitle = styled.span`
@@ -33,13 +37,22 @@ export const Subtitle = styled.span`
   color: ${(props) => props.theme.colors.gray};
 `;
 
+export const NamePet = styled.span`
+    text-align: center;
+    color: ${(props) => props.theme.colors.yellow};
+    font-size: medium;
+    font-weight: 600;
+`;
+
 export const PetImage = styled.img`
     width: 7rem;
     height: 7rem;
     object-fit: cover;
     object-position: top;
     border-radius: 50%;
-    border: 2px solid ${props => props.theme.colors.brown};
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(84,84,84,0.3);
+-moz-box-shadow: 0px 0px 8px 0px rgba(84,84,84,0.3);
+box-shadow: 0px 0px 8px 0px rgba(84,84,84,0.3);
     margin: 0 auto;
 `;
 
@@ -66,7 +79,7 @@ export const ButtonSubmit = styled.button`
   background-color: ${(props) => props.theme.colors.yellow};
   border-radius: 8px;
   padding: 0.5rem 2rem;
-  width: 12rem;
+  width: 18em;
   color: #FFFF;
   font-size: smaller;
   font-weight: 500;
@@ -82,10 +95,12 @@ justify-content: center;
   border: 1px solid ${(props) => props.theme.colors.yellow};
   border-radius: 8px;
   padding: 0.5rem 2rem;
-  width: 12rem;
+  width: 18em;
   color: ${(props) => props.theme.colors.yellow};
   font-size: smaller;
   font-weight: 500;
-  
+`;
 
+export const ErrorMessage = styled.span`
+    
 `;
