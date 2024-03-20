@@ -1,7 +1,8 @@
 export interface IOrganization {
     id?: string;
     email: string;
-    telephones: string;
+    phone?: string;
+    cel: string;
     cnpj: string;
     name: string;
     photo: string;
@@ -9,6 +10,7 @@ export interface IOrganization {
     state: string;
     city: string;
     street: string;
+    neighborhood: string;
     number: string;
     openingHours: string;
 }

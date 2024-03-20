@@ -10,6 +10,16 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [nextui()],
+  plugins: [nextui({
+    themes: {
+      light: {
+        colors: {
+          primary: {DEFAULT: '#8CB9BD'}, 
+          warning: '#ECB159',
+        },
+        focus: "#8CB9BD"
+      },
+     }
+    }) ],
 }
 

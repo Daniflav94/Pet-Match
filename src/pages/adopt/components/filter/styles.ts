@@ -13,7 +13,7 @@ export const ContainerSearch = styled.div`
 export const H3 = styled.h3`
   font-family: "Poppins", sans-serif;
   color: ${(props) => props.theme.colors.brown};
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
 `;
 

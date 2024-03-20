@@ -57,7 +57,6 @@ box-shadow: 0px 0px 8px 0px rgba(84,84,84,0.3);
 `;
 
 export const Form = styled.form`
-  background-color: transparent;
   display: flex;
   flex-direction: column;
   gap: 1rem;

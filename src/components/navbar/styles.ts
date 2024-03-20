@@ -23,6 +23,14 @@ export const Logo = styled.li`
   align-items: center;
 `;
 
+export const LogoText = styled.span`
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-left: 0.5rem;
+  color: ${(props) => props.theme.colors.nude};
+`;
+
 export const Div = styled.div`
   display: flex;
   justify-content: center;
@@ -32,14 +40,6 @@ export const Div = styled.div`
 
 export const Img = styled.img`
   width: 3rem;
-`;
-
-export const LogoText = styled.span`
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  margin-left: 0.5rem;
-  color: ${(props) => props.theme.colors.nude};
 `;
 
 export const Span = styled.span`
@@ -69,11 +69,11 @@ export const Container = styled(Div)`
 `;
 
 export const Login = styled(Span)`
-  border: 1px solid ${props => props.theme.colors.nude};
+  border: 1px solid ${(props) => props.theme.colors.nude};
   border-radius: 8px;
   padding: 0.5rem 1rem;
 
   &:hover {
-   border: 1px solid ${(props) => props.theme.colors.yellow};
+    border: 1px solid ${(props) => props.theme.colors.yellow};
   }
 `;

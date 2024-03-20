@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { Navbar } from './components/navbar'
 import  { ThemeProvider  } from 'styled-components';
 
@@ -15,9 +15,12 @@ const theme = {
     gray: '#707070'
   }
 }
+
+const route = useLocation();
+
   return (
     <ThemeProvider theme={theme} >
-      <Navbar/>
+      {route.pathname != '/login' && <Navbar/>}
      <Outlet />
     </ThemeProvider>
   )

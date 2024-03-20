@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IPet } from "../../../../interfaces/IPet";
 import { useMemo, useState } from "react";
 import { SuccessMessage } from "../successMessage/successMessage";
+import { InputCustom } from "../../../../components/input";
 
 type FormAdopt = {
   name: string;
@@ -54,6 +55,8 @@ export function ModalAdopt({ pet }: Props) {
     handleSubmit,
     watch,
     setValue,
+    control,
+    register,
     formState: { errors },
   } = useForm<FormAdopt>({ resolver: yupResolver(schema) });
 
@@ -101,53 +104,56 @@ export function ModalAdopt({ pet }: Props) {
               <S.NamePet>{pet.name}</S.NamePet>
 
               <S.Form onSubmit={handleSubmit(onSubmit)}>
-                <Input
-                  type="text"
+                <InputCustom
                   label="Nome completo"
-                  onValueChange={(value) => setValue("name", value)}
-                  size="sm"
-                  color={errors.name ? "danger" : "default"}
+                  color={errors.name ? "danger" : "primary"}
+                  control={control}
+                  name={"name"}
+                  refs={register("name")}
                   isRequired
+                  type="text"
                 />
+
                 <S.DualInput>
-                  <Input
+                  <InputCustom
                     type="text"
                     label="Email"
-                    onValueChange={(value) => setValue("email", value)}
-                    size="sm"
-                    color={errors.email ? "danger" : "default"}
+                    color={errors.name ? "danger" : "primary"}
+                    control={control}
+                    name={"email"}
+                    refs={register("email")}
                     isRequired
                     errorMessage={errors.email?.message}
                   />
-
-                  <Input
+                  <InputCustom
                     type="date"
                     label="Data de nascimento"
-                    onValueChange={(value) =>
-                      setValue("birthdate", new Date(value))
-                    }
-                    size="sm"
-                    color={errors.birthdate ? "danger" : "default"}
+                    color={errors.name ? "danger" : "primary"}
+                    control={control}
+                    name={"birthdate"}
+                    refs={register("birthdate")}
                     isRequired
                   />
                 </S.DualInput>
 
                 <S.DualInput>
-                  <Input
+                  <InputCustom
                     type="text"
                     label="Estado"
-                    onValueChange={(value) => setValue("state", value)}
-                    size="sm"
-                    color={errors.state ? "danger" : "default"}
+                    color={errors.name ? "danger" : "primary"}
+                    control={control}
+                    name={"state"}
+                    refs={register("state")}
                     isRequired
                   />
 
-                  <Input
+                  <InputCustom
                     type="text"
                     label="Cidade"
-                    onValueChange={(value) => setValue("city", value)}
-                    size="sm"
-                    color={errors.city ? "danger" : "default"}
+                    color={errors.name ? "danger" : "primary"}
+                    control={control}
+                    name={"city"}
+                    refs={register("city")}
                     isRequired
                   />
                 </S.DualInput>
@@ -214,11 +220,13 @@ export function ModalAdopt({ pet }: Props) {
                 </RadioGroup>
 
                 {watch("pets") === "Sim" && (
-                  <Input
+                  <InputCustom
                     type="text"
-                    label="Quais?"
-                    onValueChange={(value) => setValue("describePets", value)}
-                    size="sm"
+                    label="Quais"
+                    color="primary"
+                    control={control}
+                    name={"describePets"}
+                    refs={register("describePets")}
                   />
                 )}
                 {errors && (
@@ -227,7 +235,7 @@ export function ModalAdopt({ pet }: Props) {
                 {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
                 <S.ContainerButtons>
                   <Dialog.Close>
-                    <S.ButtonCancel>Cancelar</S.ButtonCancel>
+                    <S.ButtonCancel onClick={() => success && setSuccess(false)}>Cancelar</S.ButtonCancel>
                   </Dialog.Close>
                   <S.ButtonSubmit type="submit">Enviar</S.ButtonSubmit>
                 </S.ContainerButtons>
