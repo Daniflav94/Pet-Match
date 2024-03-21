@@ -45,8 +45,8 @@ export const NamePet = styled.span`
 `;
 
 export const PetImage = styled.img`
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
     object-position: top;
     border-radius: 50%;
@@ -60,7 +60,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 `;
 
 export const DualInput = styled.div`

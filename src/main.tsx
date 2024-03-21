@@ -10,11 +10,13 @@ import { NextUIProvider } from "@nextui-org/react";
 import { Theme } from "@radix-ui/themes";
 import { Adopt } from "./pages/adopt/index.tsx";
 import { Login } from "./pages/login/index.tsx";
+import { ErrorPage } from "./components/errorPage/index.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",

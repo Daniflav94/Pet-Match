@@ -48,7 +48,7 @@ export function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/login">
                 <S.Login>Entrar</S.Login>
               </Link>
             </li>

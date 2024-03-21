@@ -75,5 +75,6 @@ export const Login = styled(Span)`
 
   &:hover {
     border: 1px solid ${(props) => props.theme.colors.yellow};
+    transition: border 0.2s;
   }
 `;
