@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   justify-content: space-between;
   align-items: center;
   background-color: ${props => props.theme.colors.snow};
@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const ContainerImage = styled.div`
   min-width: 40rem;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 `;
 

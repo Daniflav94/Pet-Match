@@ -15,7 +15,7 @@ export const ContainerRegister = styled.div`
 export const ButtonArrow = styled.button`
   width: 2.5rem;
   position: absolute;
-  top: 3rem;
+  top: 0;
   left: 3rem;
 `;
 
@@ -52,5 +52,20 @@ export const Button = styled.button`
   color: #FFFF;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+`;
+
+export const InputFile = styled.div`
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: gray;
+  border: 2px solid #e4e4e7;
+  border-radius: 12px;
+  padding: 0.8rem;
+
+  &:hover {
+    border: 2px solid ${props => props.theme.colors.gray2};
+    transition: border 0.3s;
+  }
 `;
 

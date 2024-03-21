@@ -12,7 +12,8 @@ const theme = {
     nude: '#f0e4c4',
     nude2: '#f5eee8',
     coffee: '#866552',
-    gray: '#707070'
+    gray: '#707070',
+    gray2: '#969696'
   }
 }
 

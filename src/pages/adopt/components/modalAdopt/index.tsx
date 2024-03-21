@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { Input, RadioGroup, Radio } from "@nextui-org/react";
+import { RadioGroup, Radio } from "@nextui-org/react";
 import { X } from "lucide-react";
 import * as S from "./styles";
 import { useForm, SubmitHandler } from "react-hook-form";

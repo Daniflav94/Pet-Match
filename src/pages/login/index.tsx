@@ -16,8 +16,6 @@ type Login = {
 export function Login() {
   const {
     handleSubmit,
-    watch,
-    setValue,
     register,
     control,
     formState: { errors },
