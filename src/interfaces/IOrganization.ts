@@ -5,7 +5,7 @@ export interface IOrganization {
     cel: string;
     cnpj: string;
     name: string;
-    photo: string;
+    photo?: string;
     cep: string;
     state: string;
     city: string;
