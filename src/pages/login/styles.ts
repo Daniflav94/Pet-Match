@@ -57,11 +57,10 @@ export const Text = styled.span`
     color: ${(props) => props.theme.colors.gray};
 `;
 
-export const ContainerInputs = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 100%;
   max-width: 30rem;
   gap: 1rem;

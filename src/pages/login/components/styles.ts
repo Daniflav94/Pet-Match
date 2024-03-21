@@ -27,7 +27,7 @@ export const Title = styled.h1`
     margin-bottom: 2rem;
 `;
 
-export const ContainerInputs = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;

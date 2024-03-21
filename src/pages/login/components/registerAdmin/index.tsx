@@ -42,13 +42,16 @@ export function RegisterAdmin({ type }: Props) {
 
   const [isVisible, setIsVisible] = useState(false);
 
+  const cellPhoneValue = watch("cel");
   const phoneValue = watch("phone");
   const cnpjValue = watch("cnpj");
   const cepValue = watch("cep");
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  const onSubmit: SubmitHandler<SignUpAdmin> = (data) => {};
+  const onSubmit: SubmitHandler<SignUpAdmin> = (data) => {
+    console.log(data)
+  };
 
   const getAdressByCep = async (cep: string) => {
     const res: DataCep = await getDataCep(cep);
@@ -58,6 +61,10 @@ export function RegisterAdmin({ type }: Props) {
     setValue("city", res.localidade);
     setValue("state", res.uf);
   };
+
+  useEffect(() => {
+    setValue("cel", normalizePhoneNumber(cellPhoneValue));
+  }, [cellPhoneValue]);
 
   useEffect(() => {
     setValue("phone", normalizePhoneNumber(phoneValue));
@@ -76,7 +83,7 @@ export function RegisterAdmin({ type }: Props) {
   }, [cepValue]);
 
   return (
-    <S.ContainerInputs onSubmit={handleSubmit(onSubmit)}>
+    <S.Form onSubmit={handleSubmit(onSubmit)}>
       <InputCustom
         type="text"
         label="Nome estabelecimento"
@@ -252,6 +259,6 @@ export function RegisterAdmin({ type }: Props) {
         />
       </S.DualInput>
       <S.Button type="submit">Cadastrar</S.Button>
-    </S.ContainerInputs>
+    </S.Form>
   );
 }

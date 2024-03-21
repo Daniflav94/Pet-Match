@@ -2,11 +2,11 @@ import * as S from "./styles";
 import imageDog from "../../assets/images/viralata.jpeg";
 import logo from "../../assets/icons/petHouseBlue.png";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Input } from "@nextui-org/react";
-import { EyeIcon, EyeOff, MailIcon } from "lucide-react";
+import { EyeIcon, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { InputCustom } from "../../components/input";
 import { Register } from "./components/register";
+import { Toaster, toast } from 'sonner'
 
 type Login = {
   email: string;
@@ -26,10 +26,15 @@ export function Login() {
   const [isVisible, setIsVisible] = useState(false);
   const [signUpVisible, setSignUpVisible] = useState(false);
   const [typeUser, setTypeUser] = useState("user");
+  const [error, setError] = useState("");
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  const onSubmit: SubmitHandler<Login> = (data) => {};
+  const onSubmit: SubmitHandler<Login> = (data) => { 
+    console.log(data)
+
+    toast.success("Bem vindo(a)!")
+  };
 
   return (
     <S.Container>
@@ -45,7 +50,7 @@ export function Login() {
           </S.ContainerLogo>
           <S.Text>Seu novo melhor amigo está te esperando!</S.Text>
 
-          <S.ContainerInputs onSubmit={handleSubmit(onSubmit)}>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
             <InputCustom
               type="email"
               label="Email"
@@ -84,16 +89,22 @@ export function Login() {
                 </button>
               }
             />
+
             <S.Button type="submit">Entrar</S.Button>
+
             <S.TextSignUp>
               Ainda não possui uma conta? &nbsp;
-              <S.ButtonSignUp onClick={() => {setTypeUser("user"),setSignUpVisible(true)}}>
-                 Cadastre-se
+              <S.ButtonSignUp
+                onClick={() => {
+                  setTypeUser("user"), setSignUpVisible(true);
+                }}
+              >
+                Cadastre-se
               </S.ButtonSignUp>
             </S.TextSignUp>
             <S.TextSignUp>
-              Se você possui uma ONG / abrigo de animais e deseja criar uma
-              conta &nbsp;
+              Se você possui uma ONG / abrigo de animais e deseja cadastrar seus
+              pets &nbsp;
               <S.ButtonSignUp
                 onClick={() => {
                   setTypeUser("admin"), setSignUpVisible(true);
@@ -102,11 +113,12 @@ export function Login() {
                 clique aqui
               </S.ButtonSignUp>
             </S.TextSignUp>
-          </S.ContainerInputs>
+          </S.Form>
         </S.ContainerLogin>
       ) : (
-        <Register type={typeUser} setSignUpVisible={setSignUpVisible}/>
+        <Register type={typeUser} setSignUpVisible={setSignUpVisible} />
       )}
+      <Toaster position="top-right" richColors  />
     </S.Container>
   );
 }

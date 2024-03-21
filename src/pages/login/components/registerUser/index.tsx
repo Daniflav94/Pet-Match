@@ -40,15 +40,20 @@ export function RegisterUser({ type }: Props) {
     formState: { errors },
   } = useForm<SignUpUser>();
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+  const [isVisibleConfirmPassword, setIsVisibleConfirmPassword] = useState(false);
 
   const phoneValue = watch("phone");
   const cepValue = watch("cep");
   const cpfValue = watch("cpf");
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
+  const toggleVisibility = () => setIsVisiblePassword(!isVisiblePassword);
 
-  const onSubmit: SubmitHandler<SignUpUser> = (data) => {};
+  const toggleVisibilityConfirmPassword = () => setIsVisibleConfirmPassword(!isVisibleConfirmPassword);
+
+  const onSubmit: SubmitHandler<SignUpUser> = (data) => {
+    console.log(data)
+  };
 
   const getAdressByCep = async (cep: string) => {
     const res: DataCep = await getDataCep(cep);
@@ -77,7 +82,7 @@ export function RegisterUser({ type }: Props) {
   }, [cepValue]);
 
   return (
-      <S.ContainerInputs onSubmit={handleSubmit(onSubmit)}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
         <InputCustom
           type="text"
           label="Nome completo"
@@ -94,8 +99,8 @@ export function RegisterUser({ type }: Props) {
             label="Data de nascimento"
             color={"primary"}
             control={control}
-            name={"name"}
-            refs={register("name")}
+            name={"birthdate"}
+            refs={register("birthdate")}
             isRequired
           />
 
@@ -210,7 +215,7 @@ export function RegisterUser({ type }: Props) {
 
         <S.DualInput>
           <InputCustom
-            type={isVisible ? "text" : "password"}
+            type={isVisiblePassword ? "text" : "password"}
             label="Senha"
             color="primary"
             control={control}
@@ -223,7 +228,7 @@ export function RegisterUser({ type }: Props) {
                 type="button"
                 onClick={toggleVisibility}
               >
-                {isVisible ? (
+                {isVisiblePassword ? (
                   <EyeOff
                     className="text-default-400 pointer-events-none"
                     size={22}
@@ -239,7 +244,7 @@ export function RegisterUser({ type }: Props) {
           />
 
           <InputCustom
-            type={isVisible ? "text" : "password"}
+            type={isVisibleConfirmPassword ? "text" : "password"}
             label="Confirme sua senha"
             color="primary"
             control={control}
@@ -250,9 +255,9 @@ export function RegisterUser({ type }: Props) {
               <button
                 className="focus:outline-none"
                 type="button"
-                onClick={toggleVisibility}
+                onClick={toggleVisibilityConfirmPassword}
               >
-                {isVisible ? (
+                {isVisibleConfirmPassword ? (
                   <EyeOff
                     className="text-default-400 pointer-events-none"
                     size={22}
@@ -268,6 +273,6 @@ export function RegisterUser({ type }: Props) {
           />
         </S.DualInput>
         <S.Button type="submit">Cadastrar</S.Button>
-      </S.ContainerInputs>
+      </S.Form>
   );
 }
