@@ -3,7 +3,7 @@ import * as S from "../styles";
 import { IUser } from "../../../../interfaces/IUser";
 import { InputCustom } from "../../../../components/input";
 import { EyeIcon, EyeOff } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import {
   normalizeCepNumber,
@@ -97,7 +97,6 @@ export function RegisterUser({setSignUpVisible}: Props) {
     console.log(data);
 
     toast.success("Cadastro realizado com sucesso!");
-
     setSignUpVisible(false);
   };
 
