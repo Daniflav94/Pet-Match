@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@nextui-org/react": "^2.2.10",
     "@radix-ui/themes": "^2.0.3",
+    "firebase": "^10.9.0",
     "framer-motion": "^11.0.14",
     "lucide-react": "^0.359.0",
     "react": "^18.2.0",

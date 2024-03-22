@@ -2,7 +2,7 @@ import logo from "../../assets/icons/pet-house.png";
 import heart from "../../assets/icons/coracao.png";
 import bell from "../../assets/icons/sino.png";
 import * as S from "./styles";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function Navbar() {
   const route = useLocation();

@@ -1,7 +1,6 @@
 import React, { useState, createContext, ReactElement, useContext, ReactNode  } from "react";
 import { IUser } from "../../interfaces/IUser";
 
-
 interface IUserContext {
     user: IUser;
     setUser: React.Dispatch<React.SetStateAction<IUser>>;
@@ -30,10 +29,8 @@ interface UserProviderProps {
 
 export const UserContext = createContext<IUserContext>(DEFAULT_VALUE);
 
-
 const UserContextProvider: React.FC<UserProviderProps> = ({children}) => {
   const [user, setUser] = useState(DEFAULT_VALUE.user);
-
   return (
    <UserContext.Provider value={{
     user,

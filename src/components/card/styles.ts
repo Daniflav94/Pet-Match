@@ -95,6 +95,10 @@ export const Button = styled.span`
   }
 `;
 
+export const ButtonDisabled = styled(Button)`
+ opacity: 0.7;
+`;
+
 export const Button2 = styled.button`
   color: ${(props) => props.theme.colors.blue};
   font-family: "Poppins", sans-serif;

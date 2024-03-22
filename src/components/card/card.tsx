@@ -18,10 +18,10 @@ interface Props {
 
 export function Card({ pet }: Props) {
   const [isFavorite, setIsFavorite] = useState(pet.isFavorite);
+  const [isFormSent, setIsFormSent] = useState(false);
 
   return (
     <Dialog.Root>
-      
       <S.ContainerCard>
         <motion.button
           whileHover={{ scale: 1.1 }}
@@ -54,11 +54,15 @@ export function Card({ pet }: Props) {
           </S.ContainerPersonality>
           <S.Button2>Apadrinhar</S.Button2>
         </S.ContentCard>
-        <Dialog.Trigger>
-          <S.Button>Adotar</S.Button>
-        </Dialog.Trigger>
+        {!isFormSent ? (
+          <Dialog.Trigger>
+            <S.Button>Adotar</S.Button>
+          </Dialog.Trigger>
+        ) : (
+          <S.ButtonDisabled>Adoção solicitada</S.ButtonDisabled>
+        )}
       </S.ContainerCard>
-      <ModalAdopt pet={pet}/>
+      <ModalAdopt pet={pet} setIsFormSent={setIsFormSent} />
     </Dialog.Root>
   );
 }

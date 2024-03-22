@@ -14,6 +14,8 @@ import { getDataCep } from "../../../../services/viaCep";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Toaster, toast } from "sonner";
+import { IRegister } from "../../../../interfaces/IRegister";
+import { authService } from "../../../../services/auth.service";
 
 interface SignUpUser extends IUser {
   password: string;
@@ -31,24 +33,36 @@ type Props = {
   setSignUpVisible: (value: boolean) => void;
 };
 
-export function RegisterUser({setSignUpVisible}: Props) {
+export function RegisterUser({ setSignUpVisible }: Props) {
   const schema = useMemo(
     () =>
       yup.object().shape({
-        name: yup.string().min(10, "Insira seu nome completo").required("Campo obrigatório"),
+        name: yup
+          .string()
+          .min(10, "Insira seu nome completo")
+          .required("Campo obrigatório"),
         birthdate: yup.date().required(),
         gender: yup.string().required("Campo obrigatório"),
         email: yup
           .string()
           .email("Insira um formato de email válido")
           .required("Campo obrigatório"),
-        cpf: yup.string().required("Campo obrigatório").length(14, "CPF precisa ter 11 dígitos."),
-        cep: yup.string().required("Campo obrigatório").length(9, "CEP precisa ter 8 dígitos"),
+        cpf: yup
+          .string()
+          .required("Campo obrigatório")
+          .length(14, "CPF precisa ter 11 dígitos."),
+        cep: yup
+          .string()
+          .required("Campo obrigatório")
+          .length(9, "CEP precisa ter 8 dígitos"),
         street: yup.string().required("Campo obrigatório"),
         neighborhood: yup.string().required("Campo obrigatório"),
         state: yup.string().required("Campo obrigatório"),
         city: yup.string().required("Campo obrigatório"),
-        phone: yup.string().required("Campo obrigatório").length(15, "Verifique o número digitado"),
+        phone: yup
+          .string()
+          .required("Campo obrigatório")
+          .length(15, "Verifique o número digitado"),
         password: yup
           .string()
           .min(6, "A senha precisa ter no mínimo 6 caracteres")
@@ -93,11 +107,35 @@ export function RegisterUser({setSignUpVisible}: Props) {
   const toggleVisibilityConfirmPassword = () =>
     setIsVisibleConfirmPassword(!isVisibleConfirmPassword);
 
-  const onSubmit: SubmitHandler<SignUpUser> = (data) => {
+  const onSubmit: SubmitHandler<SignUpUser> = async (data) => {
     console.log(data);
 
-    toast.success("Cadastro realizado com sucesso!");
-    setSignUpVisible(false);
+    const user: IRegister = {
+      password: data.password,
+      type: "user",
+      data: {
+        name: data.name,
+        cpf: data.cpf,
+        birthdate: data.birthdate,
+        gender: data.gender,
+        email: data.email,
+        phone: data.phone,
+        cep: data.cep,
+        state: data.state,
+        city: data.city,
+        street: data.street,
+        neighborhood: data.neighborhood,
+      },
+    };
+
+    const registerUser = await authService.register(user);
+
+    if (registerUser) {
+      toast.success("Cadastro realizado com sucesso!");
+      setSignUpVisible(false);
+    } else {
+      toast.error("Ocorreu um erro ao cadastrar. Tente novamente mais tarde.");
+    }
   };
 
   const getAdressByCep = async (cep: string) => {
@@ -195,8 +233,8 @@ export function RegisterUser({setSignUpVisible}: Props) {
           refs={register("cpf")}
           isRequired
           color={errors.cpf ? "danger" : "primary"}
-        errorMessage={errors.cpf?.message}
-        isInvalid={errors.cpf ? true : false}
+          errorMessage={errors.cpf?.message}
+          isInvalid={errors.cpf ? true : false}
         />
 
         <InputCustom
@@ -331,7 +369,7 @@ export function RegisterUser({setSignUpVisible}: Props) {
         />
       </S.DualInput>
       <S.Button type="submit">Cadastrar</S.Button>
-      <Toaster position="top-right" richColors  />
+      <Toaster position="top-right" richColors />
     </S.Form>
   );
 }

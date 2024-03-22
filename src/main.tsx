@@ -11,6 +11,7 @@ import { Theme } from "@radix-ui/themes";
 import { Adopt } from "./pages/adopt/index.tsx";
 import { Login } from "./pages/login/index.tsx";
 import { ErrorPage } from "./components/errorPage/index.tsx";
+import { UserContextProvider } from "./contexts/user/userContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -40,10 +41,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Theme>
-      <NextUIProvider>
-        <RouterProvider router={router} />
-      </NextUIProvider>
-    </Theme>
+    <UserContextProvider>
+      <Theme>
+        <NextUIProvider>
+          <RouterProvider router={router} />
+        </NextUIProvider>
+      </Theme>
+    </UserContextProvider>
   </React.StrictMode>
 );

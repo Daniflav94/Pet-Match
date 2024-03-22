@@ -25,9 +25,10 @@ type FormAdopt = {
 
 interface Props {
   pet: IPet;
+  setIsFormSent: (param: boolean) => void;
 }
 
-export function ModalAdopt({ pet }: Props) {
+export function ModalAdopt({ pet, setIsFormSent }: Props) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -79,6 +80,7 @@ export function ModalAdopt({ pet }: Props) {
 
     console.log(dataForm);
     setSuccess(true);
+    setIsFormSent(true);
   };
 
   return (

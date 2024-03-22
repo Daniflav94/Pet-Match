@@ -8,7 +8,6 @@ import { InputCustom } from "../../components/input";
 import { Register } from "./components/register";
 import { Toaster, toast } from 'sonner'
 import { useNavigate } from "react-router-dom";
-import UserContext from "../../context/user/userContext";
 
 type Login = {
   email: string;
@@ -17,9 +16,6 @@ type Login = {
 
 export function Login() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-  console.log(user)
-
   const {
     handleSubmit,
     register,

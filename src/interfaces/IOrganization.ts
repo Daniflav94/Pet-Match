@@ -1,5 +1,5 @@
 export interface IOrganization {
-    id?: string;
+    uid?: string;
     email: string;
     phone?: string;
     cel: string;
