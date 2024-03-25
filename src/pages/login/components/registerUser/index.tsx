@@ -4,7 +4,7 @@ import { IUser } from "../../../../interfaces/IUser";
 import { InputCustom } from "../../../../components/input";
 import { EyeIcon, EyeOff } from "lucide-react";
 import { useContext, useEffect, useMemo, useState } from "react";
-import { Select, SelectItem } from "@nextui-org/react";
+import { Select, SelectItem, Spinner } from "@nextui-org/react";
 import {
   normalizeCepNumber,
   normalizeCpfNumber,
@@ -15,7 +15,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Toaster, toast } from "sonner";
 import { IRegister } from "../../../../interfaces/IRegister";
-import { authService } from "../../../../services/auth.service";
+import { register as registerUser } from "../../../../services/auth.service";
 
 interface SignUpUser extends IUser {
   password: string;
@@ -97,6 +97,7 @@ export function RegisterUser({ setSignUpVisible }: Props) {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const [isVisibleConfirmPassword, setIsVisibleConfirmPassword] =
     useState(false);
+  const [loading, setLoading] = useState(false);
 
   const phoneValue = watch("phone");
   const cepValue = watch("cep");
@@ -108,7 +109,7 @@ export function RegisterUser({ setSignUpVisible }: Props) {
     setIsVisibleConfirmPassword(!isVisibleConfirmPassword);
 
   const onSubmit: SubmitHandler<SignUpUser> = async (data) => {
-    console.log(data);
+    setLoading(true);
 
     const user: IRegister = {
       password: data.password,
@@ -128,14 +129,16 @@ export function RegisterUser({ setSignUpVisible }: Props) {
       },
     };
 
-    const registerUser = await authService.register(user);
+    const resRegisterUser = await registerUser(user);
 
-    if (registerUser) {
+    if (resRegisterUser) {
       toast.success("Cadastro realizado com sucesso!");
       setSignUpVisible(false);
     } else {
       toast.error("Ocorreu um erro ao cadastrar. Tente novamente mais tarde.");
     }
+
+    setLoading(false);
   };
 
   const getAdressByCep = async (cep: string) => {
@@ -368,7 +371,13 @@ export function RegisterUser({ setSignUpVisible }: Props) {
           }
         />
       </S.DualInput>
-      <S.Button type="submit">Cadastrar</S.Button>
+      {!loading ? (
+          <S.Button type="submit">Cadastrar</S.Button>
+        ) : (
+          <S.Button type="submit">
+            <Spinner color="default" size="sm"/>
+          </S.Button>
+        )}
       <Toaster position="top-right" richColors />
     </S.Form>
   );

@@ -6,8 +6,9 @@ import { EyeIcon, EyeOff } from "lucide-react";
 import { useContext, useState } from "react";
 import { InputCustom } from "../../components/input";
 import { Register } from "./components/register";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../services/auth.service";
 
 type Login = {
   email: string;
@@ -26,16 +27,18 @@ export function Login() {
   const [isVisible, setIsVisible] = useState(false);
   const [signUpVisible, setSignUpVisible] = useState(false);
   const [typeUser, setTypeUser] = useState("user");
-  const [error, setError] = useState("");
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  const onSubmit: SubmitHandler<Login> = (data) => { 
-    console.log(data)
+  const onSubmit: SubmitHandler<Login> = async (data) => {
+    const res = await login(data);
 
-    
-    toast.success("Bem vindo(a)!")
-    navigate('/')
+    if (res?.error) {
+      toast.error(res.error);
+    } else {
+      toast.success("Bem vindo(a)!");
+      navigate("/");
+    }
   };
 
   return (
@@ -120,7 +123,7 @@ export function Login() {
       ) : (
         <Register type={typeUser} setSignUpVisible={setSignUpVisible} />
       )}
-      <Toaster position="top-right" richColors  />
+      <Toaster position="top-right" richColors />
     </S.Container>
   );
 }

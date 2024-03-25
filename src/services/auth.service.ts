@@ -8,15 +8,19 @@ import {
 } from "firebase/auth";
 import { db } from "../firebase/config";
 import { collection, addDoc } from "firebase/firestore";
-import { useState, useEffect } from "react";
 import { IRegister } from "../interfaces/IRegister";
+import { ILogin } from "../interfaces/ILogin";
 import { IUser } from "../interfaces/IUser";
 import { IOrganization } from "../interfaces/IOrganization";
 
 const auth = getAuth();
 
-const register = async (data: IRegister): Promise<IUser | IOrganization | undefined> => {
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
 
+export const register = async (data: IRegister) => {
   try {
     const { user } = await createUserWithEmailAndPassword(
       auth,
@@ -35,9 +39,28 @@ const register = async (data: IRegister): Promise<IUser | IOrganization | undefi
   } catch (error) {
     console.log(error);
     console.log(typeof error);
-  
   }
 };
+
+export const login = async (data: ILogin) => {
+  try {
+    const signIn = await signInWithEmailAndPassword(auth, data.email, data.password);
+    console.log(signIn.user)
+    return {data: signIn};
+  } catch (error) {
+    const errorMessage = getErrorMessage(error);
+
+    if (errorMessage.includes("invalid-credential")) {
+      return {error: "Login / senha inválidos"};
+    } else {
+      return {error: "Ocorreu um erro, por favor tente mais tarde."};
+    }
+  }
+};
+
+export const logout = () => {
+  signOut(auth);
+}
 
 const createUser = async (user: IUser | IOrganization) => {
   try {
@@ -45,10 +68,6 @@ const createUser = async (user: IUser | IOrganization) => {
 
     return saveUser;
   } catch (error) {
-    console.log(error);
+    console.log(getErrorMessage(error));
   }
-};
-
-export const authService = {
-  register,
 };

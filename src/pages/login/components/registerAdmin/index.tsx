@@ -1,15 +1,12 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as S from "../styles";
-import { IUser } from "../../../../interfaces/IUser";
 import { InputCustom } from "../../../../components/input";
 import { EyeIcon, EyeOff } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { Select, SelectSection, SelectItem } from "@nextui-org/react";
-import { IOrganization } from "../../../../interfaces/IOrganization";
+import { Spinner } from "@nextui-org/react";
 import {
   normalizeCepNumber,
   normalizeCnpjNumber,
-  normalizeCpfNumber,
   normalizePhoneNumber,
 } from "../../../../masks/mask";
 import { getDataCep } from "../../../../services/viaCep";
@@ -17,6 +14,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Toaster, toast } from "sonner";
 import { ApiCNPJ } from "../../../../services/apiCNPJ";
+import { IRegister } from "../../../../interfaces/IRegister";
+import { register as registerUser } from "../../../../services/auth.service";
+import { IOrganization } from "../../../../interfaces/IOrganization";
 
 interface SignUpAdmin extends IOrganization {
   password: string;
@@ -100,6 +100,7 @@ export function RegisterAdmin({ setSignUpVisible }: Props) {
 
   const [isVisible, setIsVisible] = useState(false);
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const cellPhoneValue = watch("cel");
   const phoneValue = watch("phone");
@@ -109,26 +110,59 @@ export function RegisterAdmin({ setSignUpVisible }: Props) {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit: SubmitHandler<SignUpAdmin> = async (data) => {
-    setValue("photo", image)
-    console.log(data);
-    const res: QueryCnpj = await ApiCNPJ(data.cnpj.replace(/[^\d]+/g, ""));
+    setLoading(true);
+    setValue("photo", image);
 
-    if (res.STATUS !== "ATIVA") {
-      toast.custom((t) => (
-        <div>
-          <h1>Custom toast</h1>
-          <button onClick={() => toast.dismiss(t)}>Dismiss</button>
-        </div>
-      ));
+    const user: IRegister = {
+      password: data.password,
+      type: "admin",
+      data: {
+        name: data.name,
+        cnpj: data.cnpj,
+        email: data.email,
+        photo: image,
+        phone: data.phone,
+        cel: data.cel,
+        cep: data.cep,
+        state: data.state,
+        city: data.city,
+        street: data.street,
+        neighborhood: data.neighborhood,
+        number: data.number,
+        openingHours: data.openingHours,
+      },
+    };
 
-      toast.error(
-        "Seu CNPJ parece não estar ativo. Infelizmente não conseguiremos prosseguir com seu cadastro."
+    const resQueryCNPJ: QueryCnpj = await ApiCNPJ(
+      data.cnpj.replace(/[^\d]+/g, "")
+    );
+
+    const res = await registerUser(user);
+
+    if (!res) {
+      return toast.error(
+        "Erro ao cadastrar usuário. Tente novamente mais tarde."
       );
     } else {
-      toast.success("Cadastro realizado com sucesso!");
+      if (resQueryCNPJ.STATUS === "ATIVA") {
+        toast.success("Cadastro realizado com sucesso!");
 
-      setSignUpVisible(false);
+        setSignUpVisible(false);
+      } else {
+        toast.custom((t) => (
+          <div>
+            <h1>Custom toast</h1>
+            <button onClick={() => toast.dismiss(t)}>Dismiss</button>
+          </div>
+        ));
+
+        toast.error(
+          "Seu CNPJ parece não estar ativo. Infelizmente não conseguiremos prosseguir com seu cadastro."
+        );
+      }
     }
+
+    setLoading(false);
   };
 
   const handleImageChange = (event: any) => {
@@ -370,9 +404,15 @@ export function RegisterAdmin({ setSignUpVisible }: Props) {
             Selecione uma foto para seu estabelecimento{" "}
             <span style={{ color: "red" }}>*</span>
           </span>
-          <input type="file" onChange={handleImageChange} required/>
+          <input type="file" onChange={handleImageChange} required />
         </S.InputFile>
-        <S.Button type="submit">Cadastrar</S.Button>
+        {!loading ? (
+          <S.Button type="submit">Cadastrar</S.Button>
+        ) : (
+          <S.Button type="submit">
+            <Spinner color="default" size="sm"/>
+          </S.Button>
+        )}
 
         <Toaster position="top-right" richColors />
       </S.Form>
