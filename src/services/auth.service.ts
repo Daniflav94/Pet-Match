@@ -4,7 +4,6 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
-  UserCredential,
 } from "firebase/auth";
 import { db } from "../firebase/config";
 import { collection, addDoc } from "firebase/firestore";

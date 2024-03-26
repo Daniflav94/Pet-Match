@@ -48,7 +48,7 @@ export function Login() {
         city: userFirestore?.city,
         email: userFirestore?.email,
         name: userFirestore?.name,
-        birthdate: userFirestore?.birthdate,
+        birthdate: new Date(userFirestore?.birthdate.seconds * 1000),
         gender: userFirestore?.gender,
         cpf: userFirestore?.cpf,
         neighborhood: userFirestore?.neighborhood,

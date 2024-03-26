@@ -14,9 +14,10 @@ import { ModalAdopt } from "../../pages/adopt/components/modalAdopt";
 
 interface Props {
   pet: IPet;
+  userLogged: boolean;
 }
 
-export function Card({ pet }: Props) {
+export function Card({ pet, userLogged }: Props) {
   const [isFavorite, setIsFavorite] = useState(pet.isFavorite);
   const [isFormSent, setIsFormSent] = useState(false);
 
@@ -54,13 +55,13 @@ export function Card({ pet }: Props) {
           </S.ContainerPersonality>
           <S.Button2>Apadrinhar</S.Button2>
         </S.ContentCard>
-        {!isFormSent ? (
+        {!isFormSent && userLogged && (
           <Dialog.Trigger>
             <S.Button>Adotar</S.Button>
           </Dialog.Trigger>
-        ) : (
-          <S.ButtonDisabled>Adoção solicitada</S.ButtonDisabled>
         )}
+        {!isFormSent && !userLogged && <S.Button>Adotar</S.Button>}
+        {isFormSent && <S.ButtonDisabled>Adoção solicitada</S.ButtonDisabled>}
       </S.ContainerCard>
       <ModalAdopt pet={pet} setIsFormSent={setIsFormSent} />
     </Dialog.Root>

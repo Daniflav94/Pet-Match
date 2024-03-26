@@ -6,9 +6,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IPet } from "../../../../interfaces/IPet";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SuccessMessage } from "../successMessage/successMessage";
 import { InputCustom } from "../../../../components/input";
+import { IUser } from "../../../../interfaces/IUser";
 
 type FormAdopt = {
   name: string;
@@ -31,6 +32,17 @@ interface Props {
 export function ModalAdopt({ pet, setIsFormSent }: Props) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const [userLogged, setUserLogged] = useState<IUser>();
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    if (user) {
+      setUserLogged(JSON.parse(user));
+    }
+  }, []);
+
 
   const schema = useMemo(
     () =>
@@ -114,6 +126,8 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                   refs={register("name")}
                   isRequired
                   type="text"
+                  defaultValue={userLogged?.name}
+                  isReadOnly
                 />
 
                 <S.DualInput>
@@ -126,15 +140,19 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                     refs={register("email")}
                     isRequired
                     errorMessage={errors.email?.message}
+                    defaultValue={userLogged?.email}
+                    isReadOnly
                   />
                   <InputCustom
-                    type="date"
+                    type="text"
                     label="Data de nascimento"
                     color={errors.name ? "danger" : "primary"}
                     control={control}
                     name={"birthdate"}
                     refs={register("birthdate")}
                     isRequired
+                    defaultValue={userLogged && new Date(userLogged.birthdate).toLocaleDateString()}
+                    isReadOnly
                   />
                 </S.DualInput>
 
@@ -147,6 +165,8 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                     name={"state"}
                     refs={register("state")}
                     isRequired
+                    defaultValue={userLogged?.state}
+                    isReadOnly
                   />
 
                   <InputCustom
@@ -157,6 +177,8 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                     name={"city"}
                     refs={register("city")}
                     isRequired
+                    defaultValue={userLogged?.city}
+                    isReadOnly
                   />
                 </S.DualInput>
 
@@ -237,7 +259,11 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                 {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
                 <S.ContainerButtons>
                   <Dialog.Close>
-                    <S.ButtonCancel onClick={() => success && setSuccess(false)}>Cancelar</S.ButtonCancel>
+                    <S.ButtonCancel
+                      onClick={() => success && setSuccess(false)}
+                    >
+                      Cancelar
+                    </S.ButtonCancel>
                   </Dialog.Close>
                   <S.ButtonSubmit type="submit">Enviar</S.ButtonSubmit>
                 </S.ContainerButtons>

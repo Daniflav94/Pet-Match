@@ -3,11 +3,10 @@ import { FilterAdopt } from "./components/filter";
 import { IFilter } from "../../interfaces/IFilter";
 import { IPet } from "../../interfaces/IPet";
 import { Card } from "../../components/card/card";
-import {
-  Pagination,
-  PaginationItem,
-  PaginationCursor,
-} from "@nextui-org/react";
+import { Pagination } from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import { ModalLoginRequired } from "./components/modalLoginRequired";
+import * as Dialog from "@radix-ui/react-dialog";
 
 export function Adopt() {
   const pets: IPet[] = [
@@ -94,21 +93,50 @@ export function Adopt() {
     },
   ];
 
+  const [userLogged, setUserLogged] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    if (user) {
+      setUserLogged(true);
+    }
+  }, []);
+
   async function handleSubmit(filter: IFilter) {
     console.log(filter);
   }
 
   return (
-    <S.Container>
-      <FilterAdopt handleSubmit={handleSubmit} />
-      <S.ContainerCards>
-        {pets.map((pet) => (
-          <Card key={pet.id} pet={pet} />
-        ))}
-      </S.ContainerCards>
-      <S.Pagination>
-        <Pagination total={10} initialPage={1} color="warning" onChange={(page: number) => console.log(page)} />
-      </S.Pagination>
-    </S.Container>
+    <Dialog.Root>
+      <S.Container>
+        <FilterAdopt handleSubmit={handleSubmit} />
+        {!userLogged ? (
+          <Dialog.Trigger>
+            <S.ContainerCards>
+              {pets.map((pet) => (
+                <Card key={pet.id} pet={pet} userLogged={userLogged} />
+              ))}
+            </S.ContainerCards>
+          </Dialog.Trigger>
+        ) : (
+          <S.ContainerCards>
+            {pets.map((pet) => (
+              <Card key={pet.id} pet={pet} userLogged={userLogged}/>
+            ))}
+          </S.ContainerCards>
+        )}
+
+        <S.Pagination>
+          <Pagination
+            total={10}
+            initialPage={1}
+            color="warning"
+            onChange={(page: number) => console.log(page)}
+          />
+        </S.Pagination>
+      </S.Container>
+      <ModalLoginRequired />
+    </Dialog.Root>
   );
 }

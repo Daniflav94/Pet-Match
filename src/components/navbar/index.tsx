@@ -68,7 +68,7 @@ export function Navbar() {
               </S.Span>
             </Link>
           </li>
-          {userLogged?.type == "user" || userLogged?.type == "" ? (
+          {userLogged?.type != "admin" ? (
             <li>
               <Link to="/adotar">
                 <S.Span
@@ -99,8 +99,7 @@ export function Navbar() {
           )}
 
           <S.Container>
-            {userLogged?.type == "user" ||
-              (userLogged?.type == "" && (
+            {userLogged?.type !== "admin" && (
                 <li>
                   <Link to="/favoritos">
                     <S.Container>
@@ -108,7 +107,7 @@ export function Navbar() {
                     </S.Container>
                   </Link>
                 </li>
-              ))}
+              )}
             <li>
               <Link to="/notificacoes">
                 <S.Container>

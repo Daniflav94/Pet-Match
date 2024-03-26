@@ -15,7 +15,7 @@ export default {
       light: {
         colors: {
           primary: {DEFAULT: '#8CB9BD'}, 
-          warning: '#ECB159',
+          warning: {DEFAULT: '#ECB159'},
         },
         focus: "#8CB9BD"
       },
