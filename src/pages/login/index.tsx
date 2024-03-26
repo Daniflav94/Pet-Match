@@ -9,6 +9,11 @@ import { Register } from "./components/register";
 import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/auth.service";
+import { findUser } from "../../services/user.service";
+import { IOrganization } from "../../interfaces/IOrganization";
+import { IUser } from "../../interfaces/IUser";
+import UserContext from "../../contexts/user/userContext";
+import AdminContext from "../../contexts/user/adminContext";
 
 type Login = {
   email: string;
@@ -28,10 +33,57 @@ export function Login() {
   const [signUpVisible, setSignUpVisible] = useState(false);
   const [typeUser, setTypeUser] = useState("user");
 
+  const { setUser } = useContext(UserContext);
+  const { setAdmin } = useContext(AdminContext);
+
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit: SubmitHandler<Login> = async (data) => {
     const res = await login(data);
+    const userFirestore = await findUser(res.data?.user.uid as string);
+
+    if (userFirestore.type === "user") {
+      const newUser: IUser = {
+        cep: userFirestore?.cep,
+        city: userFirestore?.city,
+        email: userFirestore?.email,
+        name: userFirestore?.name,
+        birthdate: userFirestore?.birthdate,
+        gender: userFirestore?.gender,
+        cpf: userFirestore?.cpf,
+        neighborhood: userFirestore?.neighborhood,
+        phone: userFirestore?.phone,
+        state: userFirestore?.state,
+        street: userFirestore?.street,
+        type: userFirestore?.type,
+        uid: userFirestore?.uid,
+      };
+
+      setUser(newUser);
+      localStorage.setItem('user', JSON.stringify(newUser));
+      
+    } else if (userFirestore.type === "admin") {
+      const newAdmin: IOrganization = {
+        cep: userFirestore?.cep,
+        city: userFirestore?.city,
+        email: userFirestore?.email,
+        name: userFirestore?.name,
+        cnpj: userFirestore?.cnpj,
+        photo: userFirestore?.photo,
+        neighborhood: userFirestore?.neighborhood,
+        phone: userFirestore?.phone,
+        cel: userFirestore?.cel,
+        state: userFirestore?.state,
+        street: userFirestore?.street,
+        number: userFirestore?.number,
+        openingHours: userFirestore?.openingHours,
+        type: userFirestore?.type,
+        uid: userFirestore?.uid,
+      };
+
+      setAdmin(newAdmin);
+      localStorage.setItem('user', JSON.stringify(newAdmin));
+    }
 
     if (res?.error) {
       toast.error(res.error);

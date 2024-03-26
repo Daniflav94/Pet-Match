@@ -12,6 +12,9 @@ import { Adopt } from "./pages/adopt/index.tsx";
 import { Login } from "./pages/login/index.tsx";
 import { ErrorPage } from "./components/errorPage/index.tsx";
 import { UserContextProvider } from "./contexts/user/userContext.tsx";
+import { AdminContextProvider } from "./contexts/user/adminContext.tsx";
+import { MyPets } from "./pages/admin/myPets/myPets.tsx";
+import { Profile } from "./pages/profile/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -35,18 +38,28 @@ const router = createBrowserRouter([
         path: "/sobre",
         element: <About />,
       },
+      {
+        path: "/meus-pets",
+        element: <MyPets />,     
+      },
+      {
+        path: "/perfil",
+        element: <Profile />,     
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <UserContextProvider>
-      <Theme>
-        <NextUIProvider>
-          <RouterProvider router={router} />
-        </NextUIProvider>
-      </Theme>
-    </UserContextProvider>
+    <AdminContextProvider>
+      <UserContextProvider>
+        <Theme>
+          <NextUIProvider>
+            <RouterProvider router={router} />
+          </NextUIProvider>
+        </Theme>
+      </UserContextProvider>
+    </AdminContextProvider>
   </React.StrictMode>
 );

@@ -72,6 +72,10 @@ export const Login = styled(Span)`
   border: 1px solid ${(props) => props.theme.colors.nude};
   border-radius: 8px;
   padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 
   &:hover {
     border: 1px solid ${(props) => props.theme.colors.yellow};

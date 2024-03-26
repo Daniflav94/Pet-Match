@@ -26,7 +26,7 @@ export function Adopt() {
         photo:
           "https://clubedosviralatas.org.br/wp-content/uploads/2022/12/logocvl99x125px.png",
         email: "contato@clubedosviralatas.org.br",
-        telephones: "1199999-4444",
+        phone: "1199999-4444",
         cep: "09120-000",
         state: "São Paulo",
         city: "Ribeirão Pires",

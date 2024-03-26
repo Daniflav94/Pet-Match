@@ -11,4 +11,5 @@ export interface IUser {
     city: string;
     street: string;
     neighborhood: string;
+    type?: string;
 }

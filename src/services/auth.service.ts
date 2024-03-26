@@ -45,7 +45,7 @@ export const register = async (data: IRegister) => {
 export const login = async (data: ILogin) => {
   try {
     const signIn = await signInWithEmailAndPassword(auth, data.email, data.password);
-    console.log(signIn.user)
+
     return {data: signIn};
   } catch (error) {
     const errorMessage = getErrorMessage(error);
@@ -60,6 +60,7 @@ export const login = async (data: ILogin) => {
 
 export const logout = () => {
   signOut(auth);
+  localStorage.clear()
 }
 
 const createUser = async (user: IUser | IOrganization) => {

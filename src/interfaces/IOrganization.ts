@@ -13,4 +13,5 @@ export interface IOrganization {
     neighborhood: string;
     number: string;
     openingHours: string;
+    type?: string;
 }
