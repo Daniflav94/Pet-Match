@@ -10,9 +10,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import background from "../../assets/images/fundo.png";
 
 export function Adopt() {
-  const pets: IPet[] = [
-   
-  ];
+  const pets: IPet[] = [];
 
   const [userLogged, setUserLogged] = useState(false);
 
@@ -31,21 +29,20 @@ export function Adopt() {
   return (
     <Dialog.Root>
       <S.Container>
-       
         <FilterAdopt handleSubmit={handleSubmit} />
         <S.Background image={background} />
         {!userLogged ? (
           <Dialog.Trigger>
             <S.ContainerCards>
               {pets.map((pet) => (
-                <Card key={pet.id} pet={pet} userLogged={userLogged} />
+                <Card key={pet.uid} pet={pet} userLogged={userLogged} />
               ))}
             </S.ContainerCards>
           </Dialog.Trigger>
         ) : (
           <S.ContainerCards>
             {pets.map((pet) => (
-              <Card key={pet.id} pet={pet} userLogged={userLogged} />
+              <Card key={pet.uid} pet={pet} userLogged={userLogged} />
             ))}
           </S.ContainerCards>
         )}

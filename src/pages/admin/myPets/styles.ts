@@ -18,3 +18,11 @@ export const ContainerRegister = styled.div`
   gap: 2rem;
 `;
 
+export const ContainerCards = styled.section`
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 4rem;
+`;
+

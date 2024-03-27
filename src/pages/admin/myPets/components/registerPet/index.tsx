@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./styles";
 import dogIcon from "../../../../../assets/icons/dog.svg";
 import catIcon from "../../../../../assets/icons/cat.svg";
@@ -10,12 +10,15 @@ import { Select, SelectItem } from "@nextui-org/react";
 import addPhoto from "../../../../../assets/images/adicionar-foto.png";
 import { CustomButton } from "../../../../../components/customButton";
 import { createPet } from "../../../../../services/pet.service";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { Toaster, toast } from "sonner";
 
-export function RegisterPet() {
-  const { handleSubmit, watch, setValue, reset } = useForm<IPet>();
+type Props ={
+  user: IOrganization | undefined;
+}
+
+export function RegisterPet({user} : Props) {
+  const { handleSubmit, watch, setValue, reset, register } = useForm<IPet>();
 
   const personalities = [
     "Ágil",
@@ -42,20 +45,8 @@ export function RegisterPet() {
 
   const [personality, setPersonality] = useState<string[]>([]);
   const [image, setImage] = useState("");
-  const [userLogged, setUserLogged] = useState<IOrganization>();
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-
-    if (user) {
-      setUserLogged(JSON.parse(user));
-    }else if(!user || userLogged?.type === "user"){
-      navigate("/login")
-    }
-  }, []);
 
   function handleSelect(value: string) {
     const newArray = value.split(",");
@@ -67,7 +58,7 @@ export function RegisterPet() {
     setImage(URL.createObjectURL(event.target.files[0]));
   };
 
-  const onSubmit: SubmitHandler<IPet> = async(data) => {
+  const onSubmit: SubmitHandler<IPet> = async (data) => {
     setLoading(true);
     const dataForm = {
       type: data.type,
@@ -78,8 +69,8 @@ export function RegisterPet() {
       photo: image,
       isAdopt: false,
       personality: personality,
-      organization: userLogged as IOrganization,
-      uid: uuidv4()
+      organization: user as IOrganization,
+      uid: uuidv4(),
     };
 
     const res = await createPet(dataForm);
@@ -90,9 +81,9 @@ export function RegisterPet() {
       toast.error("Ocorreu um erro ao cadastrar. Tente novamente mais tarde.");
     }
 
-    console.log(dataForm);
     setLoading(false);
     reset();
+    setImage("");
   };
 
   return (
@@ -137,6 +128,8 @@ export function RegisterPet() {
                   variant="bordered"
                   color="primary"
                   classNames={{ label: "text-slate-600" }}
+                  defaultValue=""
+                  {...register("name")}
                 />
                 <Select
                   label="Personalidade"
@@ -156,6 +149,7 @@ export function RegisterPet() {
                   errorMessage={
                     personality.length > 3 && "Selecione apenas 3 atributos"
                   }
+                  
                 >
                   {personalities.map((item) => (
                     <SelectItem
@@ -177,6 +171,8 @@ export function RegisterPet() {
                   style={{ fontSize: "0.9rem" }}
                   onValueChange={(value) => setValue("gender", value)}
                   isRequired
+                  defaultValue=""
+                  {...register("gender")}
                 >
                   <S.ContainerRadio>
                     <Radio value="Macho">Macho</Radio>
@@ -191,6 +187,8 @@ export function RegisterPet() {
                   style={{ fontSize: "0.9rem" }}
                   onValueChange={(value) => setValue("size", value)}
                   isRequired
+                  defaultValue=""
+                  {...register("size")}
                 >
                   <S.ContainerRadio>
                     <Radio value="Pequeno">Pequeno</Radio>
@@ -207,6 +205,8 @@ export function RegisterPet() {
                 style={{ fontSize: "0.9rem" }}
                 onValueChange={(value) => setValue("age", value)}
                 isRequired
+                defaultValue=""
+                {...register("age")}
               >
                 <S.ContainerRadio>
                   <Radio value="Filhote">Filhote</Radio>
