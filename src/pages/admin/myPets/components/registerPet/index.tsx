@@ -4,15 +4,18 @@ import dogIcon from "../../../../../assets/icons/dog.svg";
 import catIcon from "../../../../../assets/icons/cat.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IPet } from "../../../../../interfaces/IPet";
-import { IUser } from "../../../../../interfaces/IUser";
 import { IOrganization } from "../../../../../interfaces/IOrganization";
 import { Input, Radio, RadioGroup, Spinner } from "@nextui-org/react";
 import { Select, SelectItem } from "@nextui-org/react";
 import addPhoto from "../../../../../assets/images/adicionar-foto.png";
 import { CustomButton } from "../../../../../components/customButton";
+import { createPet } from "../../../../../services/pet.service";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+import { Toaster, toast } from "sonner";
 
 export function RegisterPet() {
-  const { handleSubmit, watch, setValue } = useForm<IPet>();
+  const { handleSubmit, watch, setValue, reset } = useForm<IPet>();
 
   const personalities = [
     "Ágil",
@@ -39,14 +42,18 @@ export function RegisterPet() {
 
   const [personality, setPersonality] = useState<string[]>([]);
   const [image, setImage] = useState("");
-  const [userLogged, setUserLogged] = useState<IUser | IOrganization>();
+  const [userLogged, setUserLogged] = useState<IOrganization>();
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const user = localStorage.getItem("user");
 
     if (user) {
       setUserLogged(JSON.parse(user));
+    }else if(!user || userLogged?.type === "user"){
+      navigate("/login")
     }
   }, []);
 
@@ -60,7 +67,7 @@ export function RegisterPet() {
     setImage(URL.createObjectURL(event.target.files[0]));
   };
 
-  const onSubmit: SubmitHandler<IPet> = (data) => {
+  const onSubmit: SubmitHandler<IPet> = async(data) => {
     setLoading(true);
     const dataForm = {
       type: data.type,
@@ -71,11 +78,21 @@ export function RegisterPet() {
       photo: image,
       isAdopt: false,
       personality: personality,
-      organization: userLogged,
+      organization: userLogged as IOrganization,
+      uid: uuidv4()
     };
+
+    const res = await createPet(dataForm);
+
+    if (res) {
+      toast.success("Pet cadastrado com sucesso!");
+    } else {
+      toast.error("Ocorreu um erro ao cadastrar. Tente novamente mais tarde.");
+    }
 
     console.log(dataForm);
     setLoading(false);
+    reset();
   };
 
   return (
@@ -221,15 +238,16 @@ export function RegisterPet() {
             {!loading ? (
               <CustomButton
                 type="submit"
-                backgroundColor="#B67352"
-                hoverBackgroundColor="#c27a56"
+                backgroundColor={"#B67352"}
+                hoverBackgroundColor={"#c27a56"}
               >
                 Cadastrar
               </CustomButton>
             ) : (
               <CustomButton
                 type="submit"
-                backgroundColor="#B67352"
+                backgroundColor={"#B67352"}
+                hoverBackgroundColor={"#c27a56"}
                 disabled={true}
               >
                 <Spinner color="default" size="sm" />
@@ -237,6 +255,7 @@ export function RegisterPet() {
             )}
           </S.Form>
         </S.ContentRegister>
+        <Toaster position="top-right" richColors />
       </S.ContainerRegister>
     </S.Container>
   );

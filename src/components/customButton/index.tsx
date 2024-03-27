@@ -27,13 +27,13 @@ export function CustomButton({
   return (
     <S.Button
       type={type}
-      border={border}
-      backgroundColor={backgroundColor}
-      color={color}
-      hoverBackgroundColor={hoverBackgroundColor}
+      $border={border}
+      $backgroundColor={backgroundColor}
+      $color={color}
+      $hoverBackgroundColor={hoverBackgroundColor}
       disabled={disabled}
-      fontSize={fontSize}
-      width={width}
+      $fontSize={fontSize}
+      $width={width}
     >
       {children}
     </S.Button>
