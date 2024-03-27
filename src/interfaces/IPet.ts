@@ -8,7 +8,6 @@ export interface IPet {
     gender: string;
     size: string;
     photo: string;
-    isFavorite: boolean;
     isAdopt: boolean;
     personality: string[];
     organization: IOrganization;

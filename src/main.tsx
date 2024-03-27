@@ -13,7 +13,7 @@ import { Login } from "./pages/login/index.tsx";
 import { ErrorPage } from "./components/errorPage/index.tsx";
 import { UserContextProvider } from "./contexts/user/userContext.tsx";
 import { AdminContextProvider } from "./contexts/user/adminContext.tsx";
-import { MyPets } from "./pages/admin/myPets/myPets.tsx";
+import { MyPets } from "./pages/admin/myPets/index.tsx";
 import { Profile } from "./pages/profile/index.tsx";
 
 const router = createBrowserRouter([

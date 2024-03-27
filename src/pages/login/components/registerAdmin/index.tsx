@@ -17,6 +17,7 @@ import { ApiCNPJ } from "../../../../services/apiCNPJ";
 import { IRegister } from "../../../../interfaces/IRegister";
 import { register as registerUser } from "../../../../services/auth.service";
 import { IOrganization } from "../../../../interfaces/IOrganization";
+import { CustomButton } from "../../../../components/customButton";
 
 interface SignUpAdmin extends IOrganization {
   password: string;
@@ -406,12 +407,26 @@ export function RegisterAdmin({ setSignUpVisible }: Props) {
           </span>
           <input type="file" onChange={handleImageChange} required />
         </S.InputFile>
+
         {!loading ? (
-          <S.Button type="submit">Cadastrar</S.Button>
+          <CustomButton
+            type="submit"
+            backgroundColor="#ECB159"
+            hoverBackgroundColor="#e5ac58"
+            fontSize="1rem"
+            width="100%"
+          >
+            Cadastrar
+          </CustomButton>
         ) : (
-          <S.Button type="submit">
-            <Spinner color="default" size="sm"/>
-          </S.Button>
+          <CustomButton
+            type="submit"
+            backgroundColor="#ECB159"
+            hoverBackgroundColor="#e5ac58"
+            width="100%"
+          >
+            <Spinner color="default" size="sm" />
+          </CustomButton>
         )}
 
         <Toaster position="top-right" richColors />

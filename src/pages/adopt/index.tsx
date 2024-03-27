@@ -7,90 +7,11 @@ import { Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { ModalLoginRequired } from "./components/modalLoginRequired";
 import * as Dialog from "@radix-ui/react-dialog";
+import background from "../../assets/images/fundo.png";
 
 export function Adopt() {
   const pets: IPet[] = [
-    {
-      id: "1",
-      type: "dog",
-      name: "Lola",
-      age: "Jovem",
-      gender: "Fêmea",
-      personality: ["Alegre", "Sociável"],
-      isAdopt: false,
-      isFavorite: false,
-      organization: {
-        name: "Clube dos Viralatas",
-        cnpj: "05.299.525/0001-93",
-        photo:
-          "https://clubedosviralatas.org.br/wp-content/uploads/2022/12/logocvl99x125px.png",
-        email: "contato@clubedosviralatas.org.br",
-        phone: "1199999-4444",
-        cep: "09120-000",
-        state: "São Paulo",
-        city: "Ribeirão Pires",
-        street: "hff",
-        number: "123",
-        openingHours: "Segunda à Sexta: 08h ás 17h, Sábados: 09h ás 13h",
-      },
-      size: "Médio",
-      photo:
-        "https://clubedosviralatas.org.br/wp-content/uploads/2023/01/MARRY-1-e1673787775657.jpg",
-    },
-    {
-      id: "2",
-      type: "dog",
-      name: "Caramelo",
-      age: "Adulto",
-      gender: "Macho",
-      personality: ["Educado", "Carinhoso", "Tranquilo"],
-      isAdopt: false,
-      isFavorite: false,
-      organization: {
-        name: "Clube dos Viralatas",
-        cnpj: "05.299.525/0001-93",
-        photo:
-          "https://clubedosviralatas.org.br/wp-content/uploads/2022/12/logocvl99x125px.png",
-        email: "contato@clubedosviralatas.org.br",
-        telephones: "1199999-4444",
-        cep: "09120-000",
-        state: "São Paulo",
-        city: "Ribeirão Pires",
-        street: "hff",
-        number: "123",
-        openingHours: "Segunda à Sexta: 08h ás 17h, Sábados: 09h ás 13h",
-      },
-      size: "Pequeno",
-      photo:
-        "http://clubedosviralatas.org.br/wp-content/uploads/elementor/thumbs/JIMMY-1-q0p3s7q5glmyc0inifxs7koj33cho5p0pjeaqoya1i.jpg",
-    },
-    {
-      id: "3",
-      type: "dog",
-      name: "Shofie",
-      age: "Idoso",
-      gender: "Fêmea",
-      personality: ["Educada", "Carinhosa"],
-      isAdopt: false,
-      isFavorite: false,
-      organization: {
-        name: "Clube dos Viralatas",
-        cnpj: "05.299.525/0001-93",
-        photo:
-          "https://clubedosviralatas.org.br/wp-content/uploads/2022/12/logocvl99x125px.png",
-        email: "contato@clubedosviralatas.org.br",
-        telephones: "1199999-4444",
-        cep: "09120-000",
-        state: "São Paulo",
-        city: "Ribeirão Pires",
-        street: "hff",
-        number: "123",
-        openingHours: "Segunda à Sexta: 08h ás 17h, Sábados: 09h ás 13h",
-      },
-      size: "Médio",
-      photo:
-        "http://clubedosviralatas.org.br/wp-content/uploads/elementor/thumbs/SOFHIE-1-e1673785566979-q0p55hfloz30w6y8t8msen3c16i450aihefjbtwdu8.jpg",
-    },
+   
   ];
 
   const [userLogged, setUserLogged] = useState(false);
@@ -110,7 +31,9 @@ export function Adopt() {
   return (
     <Dialog.Root>
       <S.Container>
+       
         <FilterAdopt handleSubmit={handleSubmit} />
+        <S.Background image={background} />
         {!userLogged ? (
           <Dialog.Trigger>
             <S.ContainerCards>
@@ -122,7 +45,7 @@ export function Adopt() {
         ) : (
           <S.ContainerCards>
             {pets.map((pet) => (
-              <Card key={pet.id} pet={pet} userLogged={userLogged}/>
+              <Card key={pet.id} pet={pet} userLogged={userLogged} />
             ))}
           </S.ContainerCards>
         )}

@@ -9,7 +9,7 @@ export function About() {
         <S.Image src={paw} alt="" />
         <S.Content>
           <S.Title>Sobre nós</S.Title>
-          <span>
+          <S.Text>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. A,
             quibusdam vero omnis odio cumque tenetur. Quibusdam facilis fugit
             reprehenderit minus ducimus quisquam. Consectetur vitae odio vero
@@ -22,7 +22,7 @@ export function About() {
             nostrum fugit a ullam nesciunt, deserunt aliquid pariatur. Magnam
             itaque, a velit, quod aliquam veritatis atque cum sunt error
             provident inventore, excepturi nemo?
-          </span>
+          </S.Text>
         </S.Content>
       </S.Container>
     </>

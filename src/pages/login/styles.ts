@@ -66,15 +66,6 @@ export const Form = styled.form`
   gap: 1rem;
 `;
 
-export const Button = styled.button`
-  width: 100%;
-  background-color: ${props => props.theme.colors.yellow};
-  border-radius: 8px;
-  padding: 0.5rem 0;
-  color: #FFFF;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-`;
 
 export const TextSignUp = styled.span`
     font-family: "Poppins", sans-serif;

@@ -18,7 +18,7 @@ interface Props {
 }
 
 export function Card({ pet, userLogged }: Props) {
-  const [isFavorite, setIsFavorite] = useState(pet.isFavorite);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [isFormSent, setIsFormSent] = useState(false);
 
   return (

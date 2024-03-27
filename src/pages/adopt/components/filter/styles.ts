@@ -25,7 +25,6 @@ export const ContentIcon = styled.button`
   justify-content: center;
   padding: 0.5rem;
   border-radius: 8px;
-
 `;
 
 export const ContainerIcons = styled.div`
@@ -42,37 +41,22 @@ export const IconText = styled.span`
   color: ${(props) => props.theme.colors.brown};
   text-align: center;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 `;
 
 export const ContainerSelect = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 export const ContentSelect = styled.div`
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 `;
 
 export const TitleSelect = styled.span`
-    color: ${(props) => props.theme.colors.brown};
-    font-size: 0.9rem;
-    font-weight: 600;
-`;
-
-export const Button = styled.button`
-  background-color: ${(props) => props.theme.colors.brown};
-  padding: 0.5rem 2rem;
-  border-radius: 8px;
-  font-weight: 400;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  font-size: smaller;
-
-  &:hover {
-    background-color: #c27a56;
-  }
+  color: ${(props) => props.theme.colors.brown};
+  font-size: 0.9rem;
+  font-weight: 600;
 `;

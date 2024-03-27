@@ -134,7 +134,7 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                   <InputCustom
                     type="text"
                     label="Email"
-                    color={errors.name ? "danger" : "primary"}
+                    color={errors.email ? "danger" : "primary"}
                     control={control}
                     name={"email"}
                     refs={register("email")}
@@ -146,7 +146,7 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                   <InputCustom
                     type="text"
                     label="Data de nascimento"
-                    color={errors.name ? "danger" : "primary"}
+                    color={errors.birthdate ? "danger" : "primary"}
                     control={control}
                     name={"birthdate"}
                     refs={register("birthdate")}
@@ -160,7 +160,7 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                   <InputCustom
                     type="text"
                     label="Estado"
-                    color={errors.name ? "danger" : "primary"}
+                    color={errors.state ? "danger" : "primary"}
                     control={control}
                     name={"state"}
                     refs={register("state")}
@@ -172,7 +172,7 @@ export function ModalAdopt({ pet, setIsFormSent }: Props) {
                   <InputCustom
                     type="text"
                     label="Cidade"
-                    color={errors.name ? "danger" : "primary"}
+                    color={errors.city ? "danger" : "primary"}
                     control={control}
                     name={"city"}
                     refs={register("city")}

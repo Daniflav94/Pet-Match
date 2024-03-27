@@ -14,6 +14,7 @@ import { IOrganization } from "../../interfaces/IOrganization";
 import { IUser } from "../../interfaces/IUser";
 import UserContext from "../../contexts/user/userContext";
 import AdminContext from "../../contexts/user/adminContext";
+import { CustomButton } from "../../components/customButton";
 
 type Login = {
   email: string;
@@ -60,8 +61,7 @@ export function Login() {
       };
 
       setUser(newUser);
-      localStorage.setItem('user', JSON.stringify(newUser));
-      
+      localStorage.setItem("user", JSON.stringify(newUser));
     } else if (userFirestore.type === "admin") {
       const newAdmin: IOrganization = {
         cep: userFirestore?.cep,
@@ -82,7 +82,7 @@ export function Login() {
       };
 
       setAdmin(newAdmin);
-      localStorage.setItem('user', JSON.stringify(newAdmin));
+      localStorage.setItem("user", JSON.stringify(newAdmin));
     }
 
     if (res?.error) {
@@ -147,7 +147,14 @@ export function Login() {
               }
             />
 
-            <S.Button type="submit">Entrar</S.Button>
+            <CustomButton
+              type="submit"
+              backgroundColor="#ECB159"
+              hoverBackgroundColor="#e5ac58"
+              fontSize="1rem"
+            >
+              Entrar
+            </CustomButton>
 
             <S.TextSignUp>
               Ainda não possui uma conta? &nbsp;

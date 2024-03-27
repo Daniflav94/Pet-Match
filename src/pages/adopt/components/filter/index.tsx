@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { SelectInput } from "../../../../components/select";
 import { getListCities, getListStates } from "../../../../services/apiIBGE";
 import { IFilter } from "../../../../interfaces/IFilter";
+import { CustomButton } from "../../../../components/customButton";
 
 export interface State {
   id: number;
@@ -61,100 +62,103 @@ export function FilterAdopt(props: Props) {
   }, []);
 
   return (
-      <S.ContainerSearch>
-        <S.H3>Encontre e adote</S.H3>
-        <S.ContainerIcons>
-          <S.ContentIcon
-            onClick={() => setTypePet("dog")}
-            style={
-              typePet === "dog"
-                ? { border: "1px solid #ECB159" }
-                : { border: "none" }
-            }
-          >
-            <S.Icon src={dogIcon} alt="" />
-            <S.IconText>Cachorro</S.IconText>
-          </S.ContentIcon>
-
-          <S.ContentIcon
-            onClick={() => setTypePet("cat")}
-            style={
-              typePet === "cat"
-                ? { border: "1px solid #ECB159" }
-                : { border: "none" }
-            }
-          >
-            <S.Icon src={catIcon} alt="" />
-            <S.IconText>Gato</S.IconText>
-          </S.ContentIcon>
-        </S.ContainerIcons>
-
-        <S.ContainerSelect>
-          <S.TitleSelect>Características </S.TitleSelect>
-          <S.ContentSelect>
-            <SelectInput
-              onChange={setSize}
-              placeholder="Porte"
-              listItems={[
-                { value: "Pequeno", name: "Pequeno" },
-                { value: "Médio", name: "Médio" },
-                { value: "Grande", name: "Grande" },
-              ]}
-            />
-
-            <SelectInput
-              onChange={setAge}
-              placeholder="Idade"
-              listItems={[
-                { value: "Filhote", name: "Filhote" },
-                { value: "Jovem", name: "Jovem" },
-                { value: "Adulto", name: "Adulto" },
-                { value: "Idoso", name: "Idoso" },
-              ]}
-            />
-
-            <SelectInput
-              onChange={setGender}
-              placeholder="Sexo"
-              listItems={[
-                { value: "Macho", name: "Macho" },
-                { value: "Fêmea", name: "Fêmea" },
-              ]}
-            />
-          </S.ContentSelect>
-        </S.ContainerSelect>
-
-        <S.ContainerSelect>
-          <S.TitleSelect>Localização </S.TitleSelect>
-          <S.ContentSelect>
-            <SelectInput
-              onChange={getCities}
-              placeholder="Estado"
-              listItems={listStates}
-            />
-
-            <SelectInput
-              onChange={setCity}
-              placeholder="Cidade"
-              listItems={listCities}
-            />
-          </S.ContentSelect>
-        </S.ContainerSelect>
-
-        <S.Button
-          onClick={() =>
-            props.handleSubmit({
-              type: typePet,
-              size,
-              age,
-              gender,
-              state,
-              city,
-            })
+    <S.ContainerSearch>
+      <S.H3>Encontre e adote</S.H3>
+      <S.ContainerIcons>
+        <S.ContentIcon
+          onClick={() => setTypePet("dog")}
+          style={
+            typePet === "dog"
+              ? { border: "1px solid #ECB159" }
+              : { border: "none" }
           }
         >
-          Filtrar
-        </S.Button>
-      </S.ContainerSearch>
+          <S.Icon src={dogIcon} alt="" />
+          <S.IconText>Cachorro</S.IconText>
+        </S.ContentIcon>
+
+        <S.ContentIcon
+          onClick={() => setTypePet("cat")}
+          style={
+            typePet === "cat"
+              ? { border: "1px solid #ECB159" }
+              : { border: "none" }
+          }
+        >
+          <S.Icon src={catIcon} alt="" />
+          <S.IconText>Gato</S.IconText>
+        </S.ContentIcon>
+      </S.ContainerIcons>
+
+      <S.ContainerSelect>
+        <S.TitleSelect>Características </S.TitleSelect>
+        <S.ContentSelect>
+          <SelectInput
+            onChange={setSize}
+            placeholder="Porte"
+            listItems={[
+              { value: "Pequeno", name: "Pequeno" },
+              { value: "Médio", name: "Médio" },
+              { value: "Grande", name: "Grande" },
+            ]}
+          />
+
+          <SelectInput
+            onChange={setAge}
+            placeholder="Idade"
+            listItems={[
+              { value: "Filhote", name: "Filhote" },
+              { value: "Jovem", name: "Jovem" },
+              { value: "Adulto", name: "Adulto" },
+              { value: "Idoso", name: "Idoso" },
+            ]}
+          />
+
+          <SelectInput
+            onChange={setGender}
+            placeholder="Sexo"
+            listItems={[
+              { value: "Macho", name: "Macho" },
+              { value: "Fêmea", name: "Fêmea" },
+            ]}
+          />
+        </S.ContentSelect>
+      </S.ContainerSelect>
+
+      <S.ContainerSelect>
+        <S.TitleSelect>Localização </S.TitleSelect>
+        <S.ContentSelect>
+          <SelectInput
+            onChange={getCities}
+            placeholder="Estado"
+            listItems={listStates}
+          />
+
+          <SelectInput
+            onChange={setCity}
+            placeholder="Cidade"
+            listItems={listCities}
+          />
+        </S.ContentSelect>
+      </S.ContainerSelect>
+
+      <CustomButton
+        type="submit"
+        backgroundColor="#B67352"
+        hoverBackgroundColor="#c27a56"
+        onClick={() =>
+          props.handleSubmit({
+            type: typePet,
+            size,
+            age,
+            gender,
+            state,
+            city,
+          })
+        }
+      >
+        Filtrar
+      </CustomButton>
+    </S.ContainerSearch>
   );
 }

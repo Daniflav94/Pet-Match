@@ -3,7 +3,7 @@ import * as S from "../styles";
 import { IUser } from "../../../../interfaces/IUser";
 import { InputCustom } from "../../../../components/input";
 import { EyeIcon, EyeOff } from "lucide-react";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Select, SelectItem, Spinner } from "@nextui-org/react";
 import {
   normalizeCepNumber,
@@ -16,6 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Toaster, toast } from "sonner";
 import { IRegister } from "../../../../interfaces/IRegister";
 import { register as registerUser } from "../../../../services/auth.service";
+import { CustomButton } from "../../../../components/customButton";
 
 interface SignUpUser extends IUser {
   password: string;
@@ -372,12 +373,25 @@ export function RegisterUser({ setSignUpVisible }: Props) {
         />
       </S.DualInput>
       {!loading ? (
-          <S.Button type="submit">Cadastrar</S.Button>
-        ) : (
-          <S.Button type="submit">
-            <Spinner color="default" size="sm"/>
-          </S.Button>
-        )}
+        <CustomButton
+          type="submit"
+          backgroundColor="#ECB159"
+          hoverBackgroundColor="#e5ac58"
+          fontSize="1rem"
+          width="100%"
+        >
+          Cadastrar
+        </CustomButton>
+      ) : (
+        <CustomButton
+          type="submit"
+          backgroundColor="#ECB159"
+          hoverBackgroundColor="#e5ac58"
+          width="100%"
+        >
+          <Spinner color="default" size="sm" />
+        </CustomButton>
+      )}
       <Toaster position="top-right" richColors />
     </S.Form>
   );

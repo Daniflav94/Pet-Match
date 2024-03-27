@@ -35,3 +35,8 @@ export const Image = styled.img`
 export const Title = styled.h2`
     color: ${props => props.theme.colors.nude};
 `;
+
+export const Text = styled.span`
+    color: ${props => props.theme.colors.gray};
+    font-size: 0.9rem;
+`;
